@@ -118,6 +118,6 @@ public class DietPlanPerformance {
         int k = sc.nextInt();
         int l = sc.nextInt();
         int u = sc.nextInt();
-        System.out.println(countPoints(arr,k,u,l));
+        System.out.println(countPoints(arr, k, l, u));
     }
 }
