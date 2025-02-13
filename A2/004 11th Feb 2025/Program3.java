@@ -70,7 +70,7 @@ public class Program3 {
             cnt[0]++;
             return;
         }
-        if(i==m||j==m||grid[i][j]==1){
+        if(i>=m||j>=n||grid[i][j]==1){
             return;
         }
         bfs(grid, i+1, j, cnt);
