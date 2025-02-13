@@ -59,17 +59,22 @@ public class Program3 {
             }
         }
         int res[] = new int[1];
-        // bfs(grid, i, j, res);
+        bfs(grid, 0, 0, res);
         System.out.println(res[0]);
     }
 
-    public static void bfs(int[][] grid,int m,int n,int[] cnt){
-        // if(){
-            // 
-        // }
-        // if(){}
-        // bfs(grid,m+1,n,cnt[0]);
-        // bfs(grid,m,n+1,cnt[0]);
+    public static void bfs(int[][] grid, int i, int j, int[] cnt){
+        int m=grid.length;
+        int n=grid[0].length;
+        if(i==m-1 && j==n-1 && grid[i][j]!=1){
+            cnt[0]++;
+            return;
+        }
+        if(i==m||j==m||grid[i][j]==1){
+            return;
+        }
+        bfs(grid, i+1, j, cnt);
+        bfs(grid, i, j+1, cnt);
     }
 
 }
