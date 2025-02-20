@@ -22,28 +22,59 @@ class Node {
     int data;
     Node next;
 
-    public Node(int data) {    
-		this.data = data;    
-		this.next = null;    
-	}
+    public Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
 }
 
 class Solution {
 
     Node getmid(Node head) {
-
+        Node slow = head;
+        Node fast = head;
+        while (head.next != null && head.next.next != null) {
+            slow = head.next;
+            fast = head.next.next;
+        }
+        return slow;
     }
 
     Node reverse(Node head) {
+        Node curr = head;
+        Node prev = null;
+        Node next = null;
 
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
     }
 
     boolean isPalindrome(Node head) {
+        if (head.next == null || head == null)
+            return true;
+        Node middle = getmid(head);
+        Node reversedHalf = reverse(head);
 
+        Node first = head;
+        Node second = reversedHalf;
+
+        while (second != null) {
+            if (first.data != second.data) {
+                return false;
+            }
+            first = first.next;
+            second = second.next;
+        }
+        return true;
     }
 }
 
-public class PalindromeList {
+public class Program3 {
     public Node head = null;
     public Node tail = null;
 
@@ -60,7 +91,7 @@ public class PalindromeList {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        PalindromeList list = new PalindromeList();
+        Program3 list = new Program3();
         String list2[] = sc.nextLine().split(" ");
         for (int i = 0; i < list2.length; i++)
             list.addNode(Integer.parseInt(list2[i]));
@@ -68,4 +99,3 @@ public class PalindromeList {
         System.out.println(sl.isPalindrome(list.head));
     }
 }
-
