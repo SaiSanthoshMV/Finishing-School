@@ -42,20 +42,29 @@ public class Program3 {
                 arr[i][j] = sc.next().charAt(0);
             }
         }
-        String s = sc.next();
-        boolean flag = true;
+        String str = sc.next();
+        boolean flag = false;
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                if (arr[i][j] != s.charAt(i)) {
-                    flag = false;
-                    break;
+                if (arr[i][j] == str.charAt(0)) {
+                    if (bfs(arr, i, j, str, 0)) {
+                        flag = true;
+                        break;
+                    }
                 }
             }
+            if (flag)
+                break;
         }
-        if (flag == false)
-            System.out.println(false);
-        else
-            System.out.println(true);
+        System.out.println(flag);
+    }
 
+    private static boolean bfs(char[][] arr, int i, int j, String str, int ind) {
+        if (i < 0 || i > arr.length - 1 || j < 0 || j > arr[0].length - 1 || arr[i][j] != str.charAt(ind))
+            return false;
+        if (arr[i][j] == str.charAt(str.length() - 1) && ind == str.length() - 1)
+            return true;
+        return bfs(arr, i + 1, j, str, ind + 1) || bfs(arr, i, j + 1, str, ind + 1) || bfs(arr, i - 1, j, str, ind + 1)
+                || bfs(arr, i, j - 1, str, ind + 1);
     }
 }
