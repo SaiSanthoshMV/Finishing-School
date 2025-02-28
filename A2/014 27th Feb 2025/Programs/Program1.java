@@ -48,7 +48,7 @@ public class Program1 {
                 c++;
             else
                 c = 1;
-            r *= c;
+            r+=c;
             System.out.println(r);
         }
     }
