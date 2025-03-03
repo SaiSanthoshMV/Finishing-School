@@ -36,3 +36,35 @@
 // Input: 1
 // 100
 // Output: 0
+
+import java.util.*;
+
+public class Program2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        System.out.println(maxRotatedValue(arr));
+    }
+
+    private static int maxRotatedValue(int[] arr) {
+        int n = arr.length;
+        int sum = 0;
+        int currSum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += arr[i];
+            currSum += i * arr[i];
+        }
+        int maxSum = currSum;
+        for (int k = 1; k < n; k++) {
+            currSum += sum - n * arr[n - k];
+            maxSum = Math.max(maxSum, currSum);
+        }
+        return maxSum;
+    }
+
+   
+}
