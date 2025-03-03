@@ -1,0 +1,360 @@
+Question 1
+Complete
+Mark 0.50 out of 1.00
+Flag question
+Question text
+Which statements about autoboxing are correct?   
+Question 1Answer
+a.
+Autoboxing only works with integer types 
+b.
+Java automatically converts a wrapper class object to its corresponding primitive type
+c.
+Java automatically converts a primitive type to its corresponding wrapper class  
+d.
+Autoboxing is required for every primitive type conversion 
+
+
+Question 2
+Complete
+Mark 1.00 out of 1.00
+Flag question
+Question text
+Which of the following statements about the  toString()  method in wrapper classes are correct?   
+
+Question 2Answer
+
+a.
+ It always returns a hexadecimal representation of the value 
+
+
+b.
+It is inherited from the  Object  class and overridden in wrapper classes
+
+
+c.
+It returns a string representation of the wrapped value  
+
+
+d.
+ It cannot be called on a wrapper object  
+
+
+
+Question 3
+Complete
+Mark 0.00 out of 1.00
+Flag question
+Question text
+ What will be the output of the following code?   
+
+
+
+Integer a = 100;
+
+Integer b = 100;
+
+System.out.println(a == b);
+
+Question 3Answer
+
+a.
+false
+
+
+b.
+Runtime exception  
+
+
+c.
+true
+
+
+d.
+ Compilation error
+
+Question 4
+Complete
+Mark 0.50 out of 1.00
+Flag question
+Question text
+Which statements about the  Boolean  wrapper class are true?
+
+Question 4Answer
+
+a.
+It has a constructor that accepts a  String  
+
+
+b.
+It supports  parseBoolean()  returning a wrapper
+
+
+c.
+Boolean.valueOf("true")  returns  true 
+
+
+d.
+The Boolean class is mutable  
+
+Question 5
+Complete
+Mark 1.00 out of 1.00
+Flag question
+Question text
+Which statements about  parseXxx()  and  valueOf()  are true?
+
+Question 5Answer
+
+a.
+parseXxx()  and  valueOf()  always return the same type 
+
+
+b.
+valueOf()  can return a primitive if needed
+
+c.
+ valueOf()  returns a wrapper object  
+
+d.
+parseXxx()  returns a primitive type 
+
+Question 6
+Complete
+Mark 0.50 out of 1.00
+Flag question
+Question text
+ Which of the following statements about boxing and unboxing are true?   
+
+Question 6Answer
+
+a.
+Boxing automatically wraps a primitive into its corresponding wrapper class  
+
+
+b.
+Unboxing converts a wrapper object to its corresponding primitive  
+
+
+c.
+Unboxing is always explicit  
+
+
+d.
+Java does not allow mixing boxed and unboxed values in expressions
+
+Question 7
+Complete
+Mark 1.00 out of 1.00
+Flag question
+Question text
+ Which constructor calls are valid for wrapper classes?  
+
+Question 7Answer
+
+a.
+Integer i = new Integer(42);   
+
+
+b.
+ Character c = new Character("c"); 
+
+
+c.
+Boolean b = new Boolean(1);
+
+
+d.
+Float f = new Float(3.14f);
+
+Question 8
+Complete
+Mark 1.00 out of 1.00
+Flag question
+Question text
+Which of the following are wrapper classes in Java?
+
+Question 8Answer
+
+a.
+Boolean
+
+
+b.
+String
+
+
+c.
+Integer
+
+
+d.
+Double
+
+Question 9
+Complete
+Mark 1.00 out of 1.00
+Flag question
+Question text
+Which method retrieves the primitive value from a wrapper object?  
+
+Question 9Answer
+
+a.
+doubleValue()   
+
+
+b.
+ intValue()  
+
+
+c.
+ booleanValue()   
+
+
+d.
+parseValue()   
+
+Question 10
+Complete
+Mark 1.00 out of 1.00
+Flag question
+Question text
+ Which of the following are valid conversions using wrapper classes? 
+
+Question 10Answer
+
+a.
+Long l = Long.parseLong("1010", 2);
+
+
+b.
+Integer i = Integer.valueOf("42"); 
+
+
+c.
+ Character c = Character.valueOf("c"); 
+
+
+d.
+Double d = Double.valueOf("3.14"); 
+
+Question 11
+Complete
+Mark 1.00 out of 1.00
+Flag question
+Question text
+Which are valid ways to create an  Integer  object? 
+
+Question 11Answer
+
+a.
+ Integer i = new Integer(10); 
+
+
+b.
+Integer i = Integer.valueOf(10);   
+
+
+c.
+Integer i = Integer.parseInteger(10);   
+
+
+d.
+Integer i = Integer.toInteger(10);  
+
+Question 12
+Complete
+Mark 1.00 out of 1.00
+Flag question
+Question text
+ Which methods convert a string into a wrapper class instance?   
+
+Question 12Answer
+
+a.
+Double.parseDouble("3.14") 
+
+
+b.
+Integer.valueOf("123") 
+
+
+c.
+   Boolean.valueOf("true")   
+
+
+d.
+Character.parseChar("c")   
+
+Question 13
+Complete
+Mark 0.50 out of 1.00
+Flag question
+Question text
+What happens when using  ==  to compare two wrapper objects? 
+
+Question 13Answer
+
+a.
+ It throws an exception  
+
+
+b.
+It always compares the values inside the wrapper  
+
+
+c.
+It checks for reference equality
+
+
+d.
+It may return true for small cached values (-128 to 127)  
+
+Question 14
+Complete
+Mark 1.00 out of 1.00
+Flag question
+Question text
+What are the primary purposes of wrapper classes?
+
+Question 14Answer
+
+a.
+To convert primitive types into objects
+
+
+b.
+To enable direct file operations
+
+
+c.
+To provide utility functions for primitive types
+
+
+d.
+To enhance performance over primitive types
+
+Question 15
+Complete
+Mark 0.50 out of 1.00
+Flag question
+Question text
+Which statements about wrapper class immutability are true? 
+
+Question 15Answer
+
+a.
+ Wrapper objects cannot be modified once created
+
+
+b.
+ Wrapper objects allow direct value modifications
+
+
+c.
+A new object is created when changing the value
+
+
+d.
+Wrapper objects use the same reference for all values
