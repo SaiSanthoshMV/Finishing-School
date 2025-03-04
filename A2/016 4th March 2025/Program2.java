@@ -54,6 +54,8 @@
 // 0 <= fuel[i], cost[i] <= 10⁴
 // The space stations are arranged in a circular path.
 
+
+// Approach-1:- To Solve the Problem using Backtracking 
 import java.util.*;
 
 public class Program2 {
@@ -80,8 +82,7 @@ public class Program2 {
         return -1;
     }
 
-    private static boolean canCompleteCircuit(int[] fuel, int[] cost, int current, int tank, int stationsVisited,
-            boolean[] visited) {
+    private static boolean canCompleteCircuit(int[] fuel, int[] cost, int current, int tank, int stationsVisited,boolean[] visited) {
         int n = fuel.length;
         if (stationsVisited == n)
             return true;
@@ -93,5 +94,45 @@ public class Program2 {
             return false;
         visited[current] = true;
         return canCompleteCircuit(fuel, cost, next, tank - cost[current], stationsVisited + 1, visited);
+    }
+}
+
+// Approach-2:- To Solve the Problem using Greedy Algorithm
+class Program2_a {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] fuel = new int[n];
+        int[] cost = new int[n];
+        for (int i = 0; i < n; i++) {
+            fuel[i] = sc.nextInt();
+        }
+        for (int i = 0; i < n; i++) {
+            cost[i] = sc.nextInt();
+        }
+        System.out.println(canCompleteCircuit(fuel, cost));
+    }
+
+    public static int canCompleteCircuit(int[] fuel, int[] cost) {
+        int totalFuel = 0;
+        int totalCost = 0;
+        int start = 0;
+        int tank = 0;
+
+        for (int i = 0; i < fuel.length; i++) {
+            totalFuel += fuel[i];
+            totalCost += cost[i];
+            tank += fuel[i] - cost[i];
+            if (tank < 0) {
+                start = i + 1;
+                tank = 0;
+            }
+        }
+
+        if (totalFuel < totalCost) {
+            return -1;
+        } else {
+            return start;
+        }
     }
 }
