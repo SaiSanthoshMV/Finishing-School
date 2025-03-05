@@ -1,71 +1,63 @@
 import java.util.*;
-class FenWickTree
-{
-int[] nums;
-int[] BIT;
-int n;
 
-public FenWickTree(int[] nums) 
-{
-this.nums = nums;
-n = nums.length;
-BIT = new int[n + 1];
-for (int i = 0; i < n; i++)
-init(i, nums[i]);
-}
+class FenWickTree {
+    int[] nums;
+    int[] BIT;
+    int n;
 
-public void init(int i, int val) 
-{
-i++;
-while (i <= n) 
-{
-BIT[i] += val;
-i += (i & -i);
-}
-}
+    public FenWickTree(int[] nums) {
+        this.nums = nums;
+        n = nums.length;
+        BIT = new int[n + 1];
+        for (int i = 0; i < n; i++)
+            init(i, nums[i]);
+    }
 
-void update(int i, int val) 
-{
-int diff = val - nums[i];
-nums[i] = val;
-init(i, diff);
-}
+    public void init(int i, int val) {
+        i++;
+        while (i <= n) {
+            BIT[i] += val;
+            i += (i & -i);
+        }
+    }
 
-public int getSum(int i) 
-{
-int sum = 0;
-i++;
-while (i > 0) 
-{
-sum += BIT[i];
-i -= (i & -i);
-}
-return sum;
-}
+    void update(int i, int val) {
+        int diff = val - nums[i];
+        nums[i] = val;
+        init(i, diff);
+    }
 
-public int sumRange(int i, int j) 
-{
-return getSum(j) - getSum(i - 1);
-}
+    public int getSum(int i) {
+        int sum = 0;
+        i++;
+        while (i > 0) {
+            sum += BIT[i];
+            i -= (i & -i);
+        }
+        return sum;
+    }
 
-public static void main(String args[] ) 
-{
-Scanner scan = new Scanner(System.in);
-int n=scan.nextInt();
+    public int sumRange(int i, int j) {
+        return getSum(j) - getSum(i - 1);
+    }
 
-int[] nums=new int[n];
+    public static void main(String args[]) {
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt();
 
-for(int i=0; i<n; i++)
- nums[i] = scan.nextInt();
+        int[] nums = new int[n];
 
-FenWickTree ft =new FenWickTree(nums);
+        for (int i = 0; i < n; i++)
+            nums[i] = scan.nextInt();
 
-int s1 = scan.nextInt();
-int s2 = scan.nextInt();
-System.out.println(ft.sumRange(s1,s2));
+        FenWickTree ft = new FenWickTree(nums);
 
-int ind = scan.nextInt();
-int val= scan.nextInt();
-ft.update(ind,val);
-}
+        int s1 = scan.nextInt();
+        int s2 = scan.nextInt();
+        System.out.println(ft.sumRange(s1, s2));
+
+        int ind = scan.nextInt();
+        int val = scan.nextInt();
+        ft.update(ind, val);
+    }
 }
