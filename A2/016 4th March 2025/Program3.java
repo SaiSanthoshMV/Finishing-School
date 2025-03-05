@@ -50,12 +50,12 @@ public class Program3 {
         char[] ch = s.toCharArray();
         boolean[] used = new boolean[s.length()];
         for (int i = 1; i <= s.length(); i++) {
-            backtrack(ch, st, s, new StringBuilder(), i,used);
+            backtrack(ch, st, new StringBuilder(), i,used);
         }
         System.out.println(st);
         return st.size();
     }
-    private static void backtrack(char[] ch,Set<String>st,String s,StringBuilder sb,int targetInd,boolean[] used){
+    private static void backtrack(char[] ch,Set<String>st,StringBuilder sb,int targetInd,boolean[] used){
         if (sb.length() == targetInd) {
             st.add(sb.toString());
             return;
@@ -64,7 +64,7 @@ public class Program3 {
             if (!used[i]) {
                 used[i] = true;
                 sb.append(ch[i]);
-                backtrack(ch, st, s, sb, targetInd, used);
+                backtrack(ch, st, sb, targetInd, used);
                 sb.deleteCharAt(sb.length() - 1);
                 used[i] = false;
             }
