@@ -46,7 +46,7 @@ Sample Output:
 
 import java.util.*;
 
-public class SegmentTree 
+public class SegmentTree
 {
     class SegmentTreeNode 
 	{
