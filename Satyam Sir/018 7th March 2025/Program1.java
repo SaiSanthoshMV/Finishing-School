@@ -58,7 +58,7 @@ public class Program1 {
             n -= 11;
             sb.append(" 1 2 2 1 1 2 1 2 2 1 2 1");
             getStringBuilder(n, sb);
-        }
+        } 
         return;
     }
     public static void main(String[] args) {
