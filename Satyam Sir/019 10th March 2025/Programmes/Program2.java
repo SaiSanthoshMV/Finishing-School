@@ -28,6 +28,38 @@
 
 import java.util.*;
 
+// Can use the same approach as Container with most water
 public class Program2 {
-    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String[] ip = sc.nextLine().split(" ");
+        int[] arr = new int[ip.length];
+        for (int i = 0; i < ip.length; i++) {
+            arr[i] = Integer.parseInt(ip[i]);
+        }
+        System.out.println(longestMountain(arr));
+    }
+
+    private static int longestMountain(int[] arr) {
+        if(arr.length==0)
+            return 0;
+        for(int i=0;i<arr.length-1;i++)
+            if(arr[i]==arr[i+1])
+                return 0;
+        
+        int res = 0;
+        for (int i = 1; i < arr.length-1; i++) {
+            if (arr[i] > arr[i - 1] && arr[i] > arr[i + 1]) {
+                int left = i - 1;
+                int right = i + 1;
+                while(left>0 && arr[left]>arr[left-1])
+                    left--;
+                while(right<arr.length-1 && arr[right]>arr[right+1])
+                    right++;
+                int len = right - left + 1;
+                res = Math.max(len, res);
+            }
+        }
+        return res;
+    }
 }
