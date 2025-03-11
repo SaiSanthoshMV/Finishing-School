@@ -50,14 +50,16 @@
 
 import java.util.*;
 
-public class Program1{
+public class Program1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int[] arr = new int[n];
         for (int i = 0; i < n; i++)
             arr[i] = sc.nextInt();
-        System.out.println(maxGoldCount(arr, n));
+        // System.out.println(maxGoldCount(arr, n)); //Brute-Force Solution:-TC-O(N^2)
+        // System.out.println(maxGoldCount2(arr,n)); //Optimized Solution:-TC-O(N)
+        System.out.println(maxGoldCount3(arr, n)); //Optimized Solution Using HashMap:-TC-O(N)
     }
 
     private static int maxGoldCount(int[] arr, int n) {
@@ -65,7 +67,7 @@ public class Program1{
         for (int i = 0; i < n; i++) {
             int cnt = 0;
             Set<Integer> st = new HashSet<>();
-            for (int j = i ; j < n; j++) {
+            for (int j = i; j < n; j++) {
                 if (st.contains(arr[j])) {
                     break;
                 }
@@ -73,8 +75,47 @@ public class Program1{
                 cnt += arr[j];
                 maxCnt = Math.max(cnt, maxCnt);
             }
-            System.out.println(st+" "+cnt);
+            System.out.println(st + " " + cnt);
         }
         return maxCnt;
+    }
+
+    private static int maxGoldCount2(int[] arr, int n) {
+        int left = 0, right = 0;
+        int sum = 0, maxSum = 0;
+        Set<Integer> st = new HashSet<>();
+        while (right < n) {
+            while (st.contains(arr[right])) {
+                st.remove(arr[left]);
+                sum -= arr[left];
+                left++;
+            }
+            st.add(arr[right]);
+            sum += arr[right];
+            maxSum = Math.max(sum, maxSum);
+        }
+        return maxSum;
+    }
+
+    private static int maxGoldCount3(int[] arr, int n) {
+        Map<Integer, Integer> mp = new HashMap<>(); // Map to store frequency of elements
+        int sum = 0, maxSum = 0;
+        int left = 0, right = 0;
+
+        while (right < n) {
+            sum += arr[right];
+            mp.put(arr[right], mp.getOrDefault(arr[right], 0) + 1);
+            while (mp.get(arr[right]) > 1) {
+                mp.put(arr[left], mp.get(arr[left]) - 1);
+                sum -= arr[left];
+                if (mp.get(arr[left]) == 0) {
+                    mp.remove(arr[left]);
+                }
+                left++;
+            }
+            maxSum = Math.max(sum, maxSum);
+            right++; 
+        }
+        return maxSum;
     }
 }
