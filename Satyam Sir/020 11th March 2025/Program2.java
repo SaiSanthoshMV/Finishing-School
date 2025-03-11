@@ -67,15 +67,15 @@ public class Program2 {
         }
         PriorityQueue<Map.Entry<Integer, Integer>> pq = new PriorityQueue<>(
                 (a, b) -> a.getValue().equals(b.getValue()) ? a.getKey() - b.getKey() : a.getValue() - b.getValue());
-        for (Map.Entry<Integer, Integer> entry : mp.entrySet()) {
-            pq.offer(entry);
+        for (Map.Entry<Integer, Integer> m: mp.entrySet()) {
+            pq.add(m);
             if (pq.size() > k) {
                 pq.poll(); 
             }
         }
         List<Integer> res = new ArrayList<>();
         while (!pq.isEmpty()) {
-            res.add(0, pq.poll().getKey()); 
+            res.add(0,pq.poll().getKey()); 
         }
         return res;
     }
