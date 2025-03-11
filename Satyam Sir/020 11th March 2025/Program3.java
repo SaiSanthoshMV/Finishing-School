@@ -44,7 +44,8 @@ public class Program3 {
         Scanner sc = new Scanner(System.in);
         String s = sc.next();
         int k = sc.nextInt();
-        System.out.println(getMaxT_or_F(s, k));
+        // System.out.println(getMaxT_or_F(s, k)); //Brute-Force approach TC:-O(N^2)
+        System.out.println(getMaxT_or_F2(s, k)); //Optimal approach TC:-O(N)
     }
 
     private static int getMaxT_or_F(String s, int k) {
@@ -54,16 +55,32 @@ public class Program3 {
             for (int j = i; j < s.length(); j++) {
                 char curr = s.charAt(j);
                 mp.put(curr, mp.getOrDefault(curr, 0) + 1);
-                int cnt1 = mp.getOrDefault('T',0);
-                int cnt2 = mp.getOrDefault('F',0);
-                int tOrF = Math.min(cnt1, cnt2); 
-                if (tOrF > k) 
+                int cnt1 = mp.getOrDefault('T', 0);
+                int cnt2 = mp.getOrDefault('F', 0);
+                int tOrF = Math.min(cnt1, cnt2);
+                if (tOrF > k)
                     break;
                 int len = j - i + 1;
                 maxLen = Math.max(maxLen, len);
             }
         }
 
+        return maxLen;
+    }
+
+    private static int getMaxT_or_F2(String s, int k) {
+        int left = 0, right = 0, maxFreq = 0, maxLen = 0;
+        int[] freq = new int[26];
+        while (right < s.length()) {
+            freq[s.charAt(right) - 'A']++;
+            maxFreq = Math.max(maxFreq, freq[s.charAt(right) - 'A']);
+            if ((right - left + 1) - maxFreq > k) {
+                freq[s.charAt(left) - 'A']--;
+                left++;
+            }
+            maxLen = Math.max(maxLen, right - left + 1);
+            right++;
+        }
         return maxLen;
     }
 }
