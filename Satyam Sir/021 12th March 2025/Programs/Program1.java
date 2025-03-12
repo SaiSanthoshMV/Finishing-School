@@ -54,10 +54,8 @@ public class Program1 {
                 }
                 st.pop();
                 int k = 0;
-                int base_10 = 1;
                 while (!st.isEmpty() && Character.isDigit(st.peek())) {
-                    k = Character.getNumericValue(st.pop()) * base_10 + k;
-                    base_10 *= 10;
+                    k = k * 10 + Character.getNumericValue(st.pop());
                 }
                 String str = temp.toString();
                 for (int i = 0; i < k; i++) {
