@@ -1,0 +1,113 @@
+Example1:
+Traditional Loop vs. Lambda Expression
+
+Using a for loop (Imperative Style)
+
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+List<String> upperCaseNames = new ArrayList<>();
+for (String name : names) 
+    upperCaseNames.add(name.toUpperCase());
+System.out.println(upperCaseNames);
+
+This works, but it's verbose and focuses on how the task is performed.
+
+Using a Lambda Expression (Functional Style)
+
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+List<String> upperCaseNames = names.stream()
+                                   .map(String::toUpperCase)  // Expression, not a loop
+                                   .collect(Collectors.toList());
+System.out.println(upperCaseNames);
+
+
+What happens here? 
+ 1️.names.stream() – Converts the List<String> into a Stream of Strings.
+2️.map(String::toUpperCase) – Applies the transformation (toUpperCase()) to each element.
+3️ .collect(Collectors.toList()) – Collects the processed data into a new List<String>.
+
+Key Benefit: This avoids manual iteration and makes code more concise & readable.
+Key Difference: Instead of looping explicitly, we use map() with a lambda expression (String::toUpperCase), making the code more expressive and readable.
+
+
+
+Example2 : Filtering Without Loops
+
+Using a for Loop
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+List<Integer> evens = new ArrayList<>();
+for (int num : numbers) {
+    if (num % 2 == 0) {
+        evens.add(num);
+    }
+}
+System.out.println(evens);
+
+
+Using filter() With a Lambda Expression
+
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+List<Integer> evens = numbers.stream()
+                             .filter(n -> n % 2 == 0)  // Expression replaces loop
+                             .collect(Collectors.toList());
+
+System.out.println(evens);
+
+
+ What happens here?
+1️numbers.stream() – Converts the List<Integer> into a Stream of Integers.
+2️.filter(n -> n % 2 == 0) – Keeps only even numbers.
+3️ .collect(Collectors.toList()) – Collects the filtered elements into a new List<Integer>.
+
+�Advantage: This is declarative – it tells what to do instead of how to do it.
+ We describe what we want instead of how to do it.
+
+Example3
+Reducing Without Loops
+Using a for Loop for Sum
+
+int sum = 0;
+for (int num : numbers) 
+    sum += num;
+System.out.println(sum);
+
+Using reduce() Instead of Loops
+int sum = numbers.stream()
+                 .reduce(0, Integer::sum); // Expression replaces loop
+System.out.println(sum);
+
+No explicit looping, just an expression that tells what to compute.
+
+ What happens here?
+1️ numbers.stream() – Converts the list into a stream.
+2️ .reduce(0, Integer::sum) – Reduces the stream to a single sum.
+
+ Why reduce()? It eliminates explicit loops and works efficiently with parallel streams.
+
+
+
+What Does the stream() Method Do?
+
+In Java, the stream() method is used to process collections (like Lists and Sets) in a functional way, 
+allowing for efficient mapping, filtering, reducing, and transforming data without explicit loops.
+
+
+How stream() Works
+Converts a collection (e.g., List, Set) into a Stream.
+Allows operations like map, filter, reduce, collect to be applied in a declarative manner.
+Supports lazy evaluation, meaning operations are executed only when needed.
+Can be parallelized using .parallelStream() for better performance.
+stream() Converts a List to a Stream
+
+When to Use stream()?
+ When working with collections (List, Set, Map).
+ When transforming data (e.g., converting values, filtering elements).
+ When aggregating data (e.g., summing, counting, finding max/min).
+  When avoiding explicit loops to make code more concise & readable.
+
+
+
+ Summary: Why Prefer Expressions Over Loops?
+ Concise – Reduces boilerplate code.
+ Readable – More declarative; focuses on what rather than how.
+ Parallel Processing – Streams can run in parallel with .parallelStream().
+Less Error-Prone – Avoids common loop-related mistakes (e.g., off-by-one errors).
