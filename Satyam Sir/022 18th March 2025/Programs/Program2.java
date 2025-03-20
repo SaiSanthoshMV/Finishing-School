@@ -14,32 +14,7 @@
 // Note: You are supposed to print the K'th largest height in the sorted order of heights[].
 //  Not the K'th distinct height
 
-// import java.util.*;
-
-// public class Program2 {
-//     public static void main(String[] args) {
-//         Scanner sc = new Scanner(System.in);
-//         int n = sc.nextInt();
-//         List<Integer> arr = new ArrayList<>();
-//         for (int i = 0; i < n; i++) {
-//             arr.add(sc.nextInt());
-//         }
-//         int k = sc.nextInt();
-//         PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
-//         pq.addAll(arr);
-//         while (k > 1 && !pq.isEmpty()) {
-//             pq.poll();
-//             k--;
-//         }
-//         if (!pq.isEmpty()) {
-//             System.out.println(pq.peek());
-//         }
-//     }
-
-// }
-
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 class TreapNode {
     int key, priority, size;
@@ -47,104 +22,94 @@ class TreapNode {
 
     public TreapNode(int key) {
         this.key = key;
-        this.priority = new Random().nextInt();
-        this.size = 1;
+        this.priority = (int) (Math.random() * 100);
+        this.size = 1; 
         this.left = this.right = null;
     }
 }
 
-class Treap {
-    private TreapNode root;
-
-    // Get size of a node
-    private int getSize(TreapNode node) {
-        return node == null ? 0 : node.size;
+class test {
+    private static int getSize(TreapNode node) {
+        return (node == null) ? 0 : node.size;
     }
 
-    // Update size after modification
-    private void updateSize(TreapNode node) {
+    private static void updateSize(TreapNode node) {
         if (node != null) {
             node.size = 1 + getSize(node.left) + getSize(node.right);
         }
     }
 
-    // Right Rotate
-    private TreapNode rightRotate(TreapNode y) {
+    public static TreapNode rightRotate(TreapNode y) {
         TreapNode x = y.left;
         TreapNode T2 = x.right;
+
         x.right = y;
         y.left = T2;
+
         updateSize(y);
         updateSize(x);
+
         return x;
     }
 
-    // Left Rotate
-    private TreapNode leftRotate(TreapNode x) {
+    public static TreapNode leftRotate(TreapNode x) {
         TreapNode y = x.right;
         TreapNode T2 = y.left;
+
         y.left = x;
         x.right = T2;
+
         updateSize(x);
         updateSize(y);
+
         return y;
     }
 
-    // Insert a key into the Treap
-    private TreapNode insert(TreapNode node, int key) {
-        if (node == null)
-            return new TreapNode(key);
+    public static TreapNode insertNode(TreapNode root, int key) {
+        if (root == null) return new TreapNode(key);
 
-        if (key <= node.key) {
-            node.left = insert(node.left, key);
-            if (node.left.priority > node.priority)
-                node = rightRotate(node);
+        if (key <= root.key) {
+            root.left = insertNode(root.left, key);
+            if (root.left.priority > root.priority) {
+                root = rightRotate(root);
+            }
         } else {
-            node.right = insert(node.right, key);
-            if (node.right.priority > node.priority)
-                node = leftRotate(node);
+            root.right = insertNode(root.right, key);
+            if (root.right.priority > root.priority) {
+                root = leftRotate(root);
+            }
         }
-
-        updateSize(node);
-        return node;
+        updateSize(root);
+        return root;
     }
 
-    public void insert(int key) {
-        root = insert(root, key);
+    public static int findKthLargest(TreapNode root, int k) {
+        if (root == null) return -1;
+
+        int rightSize = getSize(root.right);
+        
+        if (rightSize + 1 == k) return root.key; 
+        if (rightSize >= k) return findKthLargest(root.right, k); 
+        return findKthLargest(root.left, k - rightSize - 1);
     }
 
-    // Find the k-th largest element
-    private int findKthLargest(TreapNode node, int k) {
-        int rightSize = getSize(node.right);
-
-        if (rightSize + 1 == k) {
-            return node.key;
-        } else if (rightSize + 1 < k) {
-            return findKthLargest(node.left, k - rightSize - 1);
-        } else {
-            return findKthLargest(node.right, k);
-        }
-    }
-
-    public int findKthLargest(int k) {
-        if (root == null || k > root.size) {
-            return -1;
-        }
-        return findKthLargest(root, k);
-    }
-}
-
-public class Program2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String s[] = sc.nextLine().split(" ");
-        int[] arr = new int[s.length];
-        Treap treap = new Treap();
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = Integer.parseInt(s[i]);
-        }
-        int k = sc.nextInt();
 
-        System.out.println(treap.findKthLargest(k));
+       int n = sc.nextInt();
+        int nums[] = new int[n];
+        
+        int k = sc.nextInt();
+        for (int i = 0; i < n; i++) {
+            nums[i] = sc.nextInt();
+        }
+
+
+        TreapNode root = null;
+        for (int num : nums) {
+            root = insertNode(root, num);
+        }
+
+        System.out.println(findKthLargest(root, k));
     }
 }
