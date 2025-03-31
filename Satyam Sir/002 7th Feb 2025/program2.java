@@ -17,6 +17,5 @@ public class program2 {
         }
     }
     System.out.println(res);
-    sc.close();
 }
 }
