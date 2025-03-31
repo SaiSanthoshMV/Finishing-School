@@ -19,7 +19,6 @@ public class program1{
             if (hasUniqueDigits(i))
                 System.out.print(i + " ");
         }
-        sc.close();
     }
     static boolean hasUniqueDigits(int ele){
         Set<Character>st=new HashSet<>();
