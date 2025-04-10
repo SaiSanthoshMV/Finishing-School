@@ -63,35 +63,21 @@ public class Program1 {
         for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
-        System.out.println(getMinimumInd2(arr, n));
+        System.out.println(getMinimumInd(arr, n));
     }
 
     private static int getMinimumInd(int[] arr,int n){
-        int left = 0, right = 0;
-        int minInd = Integer.MAX_VALUE;
-        Map<Integer, Integer> mp = new HashMap<>();
-        while (right < n) {
-            mp.put(arr[right], mp.getOrDefault(arr[right], 0)+1);
-            if (mp.get(arr[right]) >= 2) {
-                mp.put(arr[left], mp.get(arr[left])-1);
-                if (mp.get(arr[left]) == 1)
-                    mp.remove(arr[left]);
-                minInd = Math.min(minInd, right - left + 1);
-                left++;
-            }
-            right++;
-        }
-        return minInd;
-    }
-    private static int getMinimumInd2(int[] arr,int n){
         Map<Integer, List<Integer>> mp = new HashMap<>();
         for (int i = 0; i < n; i++) {
             mp.putIfAbsent(arr[i], new ArrayList<>());
-        }
-        for (int i = 0; i < n; i++) {
             mp.get(arr[i]).add(i);
         }
-        System.out.println(mp);
-        return 0;
+        int minSize=Integer.MAX_VALUE;
+        for (Map.Entry<Integer, List<Integer>> m : mp.entrySet()) {
+            if (m.getValue().size() > 1) {
+                minSize = Math.min(minSize, m.getValue().get(m.getValue().size() - 1)-m.getValue().get(0));
+            }
+        }
+        return minSize+1;
     }
 }
