@@ -90,15 +90,15 @@ public class Program2 {
             }
         }
         // System.out.println(mp);
-        if (size <= 0) {
-            if (mp.get(name).size() > 0) {
-                return mp.get(name).size();
-            } else
-                return -1;
-        }
-        else
-            return size;
-        
+        // if (size <= 0) {
+        //     if (mp.get(name).size() > 0) {
+        //         return mp.get(name).size();
+        //     } else
+        //         return -1;
+        // }
+        // else
+        //     return size;
+        return size <= 0 ? (mp.get(name).size() > 0 ? mp.get(name).size() : -1) : size;
     }
     
 }
