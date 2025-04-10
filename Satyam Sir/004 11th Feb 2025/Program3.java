@@ -59,11 +59,11 @@ public class Program3 {
             }
         }
         int res[] = new int[1];
-        bfs(grid, 0, 0, res);
+        dfs(grid, 0, 0, res);
         System.out.println(res[0]);
     }
 
-    public static void bfs(int[][] grid, int i, int j, int[] cnt){
+    public static void dfs(int[][] grid, int i, int j, int[] cnt){
         int m=grid.length;
         int n=grid[0].length;
         if(i==m-1 && j==n-1 && grid[i][j]!=1){
@@ -73,8 +73,8 @@ public class Program3 {
         if(i>=m||j>=n||grid[i][j]==1){
             return;
         }
-        bfs(grid, i+1, j, cnt);
-        bfs(grid, i, j+1, cnt);
+        dfs(grid, i+1, j, cnt);
+        dfs(grid, i, j+1, cnt);
     }
 
 }

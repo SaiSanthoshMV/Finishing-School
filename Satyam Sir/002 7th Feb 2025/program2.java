@@ -5,9 +5,8 @@ public class program2 {
     Scanner sc = new Scanner(System.in);
     String str = sc.next();
     List<String> res = new ArrayList<>();
-    StringBuilder sb=new StringBuilder(str);for(
-    int i = 1;i<sb.length();i++)
-    {
+    StringBuilder sb=new StringBuilder(str);
+    for(int i = 1;i<sb.length();i++){
         if (sb.charAt(i) == sb.charAt(i - 1) && sb.charAt(i) == '+') {
             sb.setCharAt(i, '-');
             sb.setCharAt(i - 1, '-');
@@ -17,6 +16,5 @@ public class program2 {
         }
     }
     System.out.println(res);
-    sc.close();
 }
 }

@@ -16,6 +16,5 @@ public class program3 {
             }
         }
         System.out.println(str.toString());
-          sc.close();
     }
 }
