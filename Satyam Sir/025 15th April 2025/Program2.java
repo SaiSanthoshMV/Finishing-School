@@ -92,9 +92,12 @@ public class Program2 {
         System.out.println(primes);
         if (str.equals("MAGIC_SURGE")) {
             int sum = 0;
-            for (int ele : primes)
+            int prod = 1;
+            for (int ele : primes) {
+                prod *= ele;
                 sum += ele;
-            System.out.println(sum);
+            }
+            System.out.println(prod+sum);
         }
         else if(str.equals("NORMAL")) {
             int product = 1;
