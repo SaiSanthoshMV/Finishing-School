@@ -51,8 +51,8 @@ public class Program1 {
         int res = 0;
         for (int i = 2; i <= n; i++) {
             res = (res + k) % i;
-
-            System.out.println(res + 1);
         }
+        System.out.println(res + 1);
+    
     }
 }
