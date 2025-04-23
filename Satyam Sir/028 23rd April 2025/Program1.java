@@ -55,8 +55,8 @@ public class Program1 {
             arr[i] = sc.nextInt();
         }
         int target = sc.nextInt();
-        System.out.println(threeSumCloset(arr, n, target));
-        System.out.println(threeSumCloset2(arr, n, target));
+        System.out.println(threeSumCloset(arr, n, target)); //Brute-Force Solution
+        System.out.println(threeSumCloset2(arr, n, target)); //Optimized 
     }
 
     static int threeSumCloset(int[] arr, int n, int target) {
