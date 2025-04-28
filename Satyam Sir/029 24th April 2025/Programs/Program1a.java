@@ -1,4 +1,5 @@
-package Programs;
+// Program to implement longest Common Prefix
+// This is done iteratively
 import java.util.*;
 
 public class Program1a {
