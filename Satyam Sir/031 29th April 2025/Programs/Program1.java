@@ -67,7 +67,7 @@ public class Program1 {
         }
     }
         
-    static int countDistSub(String str) {
+    // static int countDistSub(String str) {
         SuffixTrie sTrie = new SuffixTrie(str);
         return sTrie.countNodesInTrie();
     }
