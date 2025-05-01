@@ -1,0 +1,62 @@
+     
+  Graph 
+    
+     (1)
+      |
+     (2)
+    /   \
+  (3)   (4)
+             \
+             (5)
+
+Tarjan’s bridge detection logic
+
+
+Let’s now apply Tarjan’s bridge detection logic step-by-step using the rules we just framed, 
+with this exact graph.
+
+
+DFS Walkthrough with disc[], low[], and Bridge Rules
+
+Start from Node 1
+disc[1] = 0, low[1] = 0
+
+Visit child   --> Node 2
+Visit Node 2 from 1
+disc[2] = 1, low[2] = 1
+
+Visit child --> Node 3
+Visit Node 3 from 2
+disc[3] = 2, low[3] = 2
+
+Only neighbor = 2 (parent) --> backtrack
+
+Backtrack to 2
+low[2] = min(1, 2) = 1
+
+Bridge Check:
+low[3] > disc[2] --> 2 > 1 --> YES --> (2,3) is a bridge
+
+Visit Node 4 from 2
+disc[4] = 3, low[4] = 3
+Visit child --> Node 5
+
+Visit Node 5 from 4
+disc[5] = 4, low[5] = 4
+Only neighbor = 4 --> backtrack
+
+Backtrack to 4
+low[4] = min(3, 4) = 3
+Bridge Check:
+low[5] > disc[4] --> 4 > 3 --> YES --> (4,5) is a bridge
+
+Backtrack to 2
+low[2] = min(1, 3) = 1
+Bridge Check:
+low[4] > disc[2] --> 3 > 1 --> YES --> (2,4) is a bridge
+
+Backtrack to 1
+low[1] = min(0, 1) = 0
+
+Bridge Check:
+low[2] > disc[1] --> 1 > 0 --> YES --> (1,2) is a bridge

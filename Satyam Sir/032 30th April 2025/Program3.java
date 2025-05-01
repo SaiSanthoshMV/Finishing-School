@@ -45,7 +45,7 @@
 
 // Note:
 // -----
-// - The program uses Tarjan’s Algorithm for bridge detection, which uses discovery times and low values during DFS traversal.
+// - The program uses Tarjan’s Algorithm for bridge detection, which uses discovery cnts and low values during DFS traversal.
 // - The edge list in the output does not need to be sorted.
 import java.util.*;
 
@@ -71,26 +71,24 @@ public class Program3 {
         Arrays.fill(low, -1);
 
         List<List<Integer>> res = new ArrayList<>();
-        for (int i = 0, time = 0; i < n; i++)
+        for (int i = 0, cnt = 0; i < n; i++)
             if (!visited[i])
-                dfs(i, -1, time, visited, disc, low, mp, res);
+                dfs(i, -1, cnt, visited, disc, low, mp, res);
         
         for (List<Integer> b : res)
             System.out.println(b.get(0) + " " + b.get(1));
     }
 
 
-    private static void dfs(int u, int parent, int time, boolean[] visited, int[] disc,int[] low, Map<Integer, List<Integer>> mp, List<List<Integer>> res) {
+    private static void dfs(int u, int parent, int cnt, boolean[] visited, int[] disc,int[] low, Map<Integer, List<Integer>> mp, List<List<Integer>> res) {
         visited[u] = true;
-        disc[u] = time + 1;
-        low[u] = time + 1;
-        time++;
+        disc[u] = low[u] = ++cnt;
         if (mp.containsKey(u)) {
             for (int v : mp.get(u)) {
                 if (v == parent)
                     continue;
                 if (!visited[v]) {
-                    dfs(v, u, time, visited, disc, low, mp, res);
+                    dfs(v, u, cnt, visited, disc, low, mp, res);
                     low[u] = Math.min(low[u], low[v]);
                     if (low[v] > disc[u]) {
                         res.add(Arrays.asList(u,v));
