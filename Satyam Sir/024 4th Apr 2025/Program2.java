@@ -65,40 +65,38 @@ import java.util.*;
 public class Program2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        String[][] str = new String[n][];
-        for (int i = 0; i < n; i++) {
-            str[i] = sc.next().split(",");
-        }
-        String name = sc.next();
-        System.out.println(getChild(str, name));
-    }
-
-    private static int getChild(String[][] str, String name) {
-        Map<String, List<String>> mp = new HashMap<>();
-        for (int i = 0; i < str.length; i++) {
-            mp.putIfAbsent(str[i][1], new ArrayList<>());
-            mp.get(str[i][1]).add(str[i][0]);
-        }
         
-        int size = 0;
-        if (mp.containsKey(name)) {
-            for (String child : mp.get(name)) {
-                if (mp.containsKey(child)) {
-                    size += mp.get(child).size();
-                }
+        int n = Integer.parseInt(sc.nextLine()); // Number of relationships
+        Map<String, List<String>> map = new HashMap<>();
+
+        // Reading relationships and building map
+        for (int i = 0; i < n; i++) {
+            String[] parts = sc.nextLine().split(",");
+            String child = parts[0];
+            String father = parts[1];
+            map.computeIfAbsent(father, k -> new ArrayList<>()).add(child);
+        }
+
+        String name = sc.nextLine(); 
+
+        if (!map.containsKey(name)) {
+            System.out.println(-1);
+            return;
+        }
+
+        List<String> children = map.get(name);
+        int grandChildCount = 0;
+
+        for (String child : children) {
+            if (map.containsKey(child)) {
+                grandChildCount += map.get(child).size();
             }
         }
-        // System.out.println(mp);
-        // if (size <= 0) {
-        //     if (mp.get(name).size() > 0) {
-        //         return mp.get(name).size();
-        //     } else
-        //         return -1;
-        // }
-        // else
-        //     return size;
-        return size <= 0 ? (mp.get(name).size() > 0 ? mp.get(name).size() : -1) : size;
+
+        if (grandChildCount > 0) {
+            System.out.println(grandChildCount); 
+        } else {
+            System.out.println(children.size()); 
+        }
     }
-    
 }
