@@ -60,24 +60,46 @@ public class Program1 {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int[] arr = new int[n];
+
         for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
-        System.out.println(getMinimumInd(arr, n));
+
+        System.out.println(getMinLengthWithPeakFrequency(arr));
     }
 
-    private static int getMinimumInd(int[] arr,int n){
-        Map<Integer, List<Integer>> mp = new HashMap<>();
-        for (int i = 0; i < n; i++) {
-            mp.putIfAbsent(arr[i], new ArrayList<>());
-            mp.get(arr[i]).add(i);
-        }
-        int minSize=Integer.MAX_VALUE;
-        for (Map.Entry<Integer, List<Integer>> m : mp.entrySet()) {
-            if (m.getValue().size() > 1) {
-                minSize = Math.min(minSize, m.getValue().get(m.getValue().size() - 1)-m.getValue().get(0));
+    private static int getMinLengthWithPeakFrequency(int[] arr) {
+        Map<Integer, Integer> freqMap = new HashMap<>();
+        Map<Integer, int[]> indexMap = new HashMap<>(); 
+
+        int maxFreq = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            int val = arr[i];
+
+            // Update frequency
+            freqMap.put(val, freqMap.getOrDefault(val, 0) + 1);
+            maxFreq = Math.max(maxFreq, freqMap.get(val));
+
+            // Update first and last indices
+            if (!indexMap.containsKey(val)) {
+                indexMap.put(val, new int[]{i, i}); 
+            } else {
+                indexMap.get(val)[1] = i;
             }
         }
-        return minSize+1;
+
+        int minLen = Integer.MAX_VALUE;
+
+        // Loop through keys with max frequency
+        for (int key : freqMap.keySet()) {
+            if (freqMap.get(key) == maxFreq) {
+                int[] range = indexMap.get(key);
+                int len = range[1] - range[0] + 1;
+                minLen = Math.min(minLen, len);
+            }
+        }
+
+        return minLen;
     }
 }
