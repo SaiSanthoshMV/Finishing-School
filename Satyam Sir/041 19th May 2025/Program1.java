@@ -74,5 +74,18 @@
 import java.util.*;
 
 public class Program1 {
-    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        int n = str.length();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        System.out.println(minCost(arr, str));
+    }
+
+    private static minCost(int[] arr,String str){
+        
+    }
 }
