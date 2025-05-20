@@ -82,10 +82,10 @@ public class Program1 {
         for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
-        // System.out.println(minCost(arr, str));
+        System.out.println(minCost(arr, str));
     }
 
-    // private static minCost(int[] arr,String str){
-        
-    // }
+    private static int minCost(int[] arr,String str){
+        return 0;
+    }
 }
