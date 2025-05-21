@@ -1,4 +1,4 @@
-// Indus Infra Ltd purchased a land of size L * W acres, for their upcoming venture.
+/* Indus Infra Ltd purchased a land of size L * W acres, for their upcoming venture.
 // The land is divided into rectangular plots, using fences. They have kept some 
 // H horizontal fences as hfences[] and V vertical fences as vfences[] on the land,
 // where hfence[i] is the distance from the top of the land to the i-th horizontal
@@ -31,7 +31,6 @@
 // ----------------
 // 6
 
-
 // Sample Input-2:
 // ---------------
 // 5 6 1 1
@@ -40,9 +39,44 @@
 
 // Sample Output-2:
 // ----------------
-// 12
+// 12 */
 
 import java.util.*;
 public class Program1 {
-    
+    final static int MOD = (int) 1e9 + 7;
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int l = sc.nextInt();
+        int w = sc.nextInt();
+        int h = sc.nextInt();
+        int v = sc.nextInt();
+        List<Integer> hfence = new ArrayList<>();
+        List<Integer> vfence = new ArrayList<>();
+        hfence.add(0);
+        vfence.add(0);
+        for (int i = 0; i < h; i++) {
+            hfence.add(sc.nextInt());
+        }
+        hfence.add(l);
+        for (int i = 0; i < v; i++) {
+            vfence.add(sc.nextInt());
+        }
+        vfence.add(w);
+        System.out.println(maxArea(hfence, vfence));
+    }
+
+    private static int maxArea(List<Integer> hfence, List<Integer> vfence) {
+        int maxH = 0, maxW = 0;
+        hfence.sort(null);
+        vfence.sort(null);
+        for(int i=1;i<hfence.size();i++)
+        {
+            maxH = Math.max(maxH, hfence.get(i) - hfence.get(i - 1));
+        }
+        for (int i = 1; i < vfence.size(); i++) {
+            maxW = Math.max(maxW, vfence.get(i) - vfence.get(i - 1));
+        }
+        return (int) ((long) maxH * maxW % MOD);
+    }
 }
