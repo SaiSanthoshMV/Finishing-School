@@ -1,0 +1,138 @@
+Disjoint Set Union (DSU), also known as Union-Find, is a data structure 
+that keeps track of a set of elements partitioned into a 
+number of disjoint (non-overlapping) subsets. 
+
+It supports two main operations efficiently:
+
+1.	Find: Determine which subset a particular element is in. 
+	This can be used to determine if two elements are in the same subset.
+2.	Union: Join two subsets into a single subset.
+
+DSU is particularly useful for dealing with dynamic connectivity problems, 
+such as determining the connected components of a graph.
+
+
+Step-by-Step Explanation
+
+Initialization
+1.	MakeSet: Initialize the DSU structure by creating a singleton set for each element.
+	Each element starts as its own parent (representative of its own set).
+	Initialize the rank (or size) of each set to 0.
+
+Find Operation
+2.	Find: Find the representative (root) of the set containing element x.
+	Follow the parent pointers until the root of the set is reached.
+	Path compression is used to make the tree flat, by making every node directly point to the root.
+
+Union Operation
+3.	Union: Merge the sets containing elements x and y.
+	Find the roots of the sets containing x and y.
+	If the roots are different, merge the sets.
+	Union by rank is used to keep the tree shallow, 
+	by attaching the smaller tree under the root of the larger tree.
+
+
+
+1) Initialization/Constructor
+
+The constructor initializes the DSU data structure. Here are the steps:
+
+Parameters: The constructor takes an integer n, representing the number of elements.
+Initialize Arrays:
+parent: An array where parent[i] is the parent of element i. Initially, each element is its own parent.
+rank: An array to store the rank (or depth) of the trees. Initially, all ranks are 0.
+
+public DSU(int n) {
+    parent = new int[n]; // Initialize parent array
+    rank = new int[n]; // Initialize rank array
+    for (int i = 0; i < n; i++) {
+        parent[i] = i; // Each element is its own parent
+        rank[i] = 0; // Initial rank is 0
+    }
+}
+
+This loop iterates over each element from 0 to n-1.
+Sets the parent of each element to itself.
+Sets the initial rank of each element to 0.
+
+
+
+
+2) Find Method
+
+The find method determines the root representative of the set containing x. 
+It also applies path compression to flatten the structure for efficiency.
+
+public int find(int x) {
+    if (parent[x] != x) { // If x is not its own parent
+        parent[x] = find(parent[x]); // Path compression
+    }
+    return parent[x]; // Return the root representative
+}
+
+
+
+if (parent[x] != x): 
+Checks if x is not its own parent (i.e., x is not the root).
+
+parent[x] = find(parent[x]);:
+Recursively finds the root of x's set and sets x's parent to this root. 
+This is the path compression step, 
+which makes future operations more efficient by directly connecting x to its root.
+
+return parent[x];
+Returns the root representative of the set containing x.
+
+
+
+
+
+3) Union Method
+The union method merges the sets containing elements x and y.
+
+
+public void union(int x, int y) {
+    int rootX = find(x); // Find the root of x
+    int rootY = find(y); // Find the root of y
+
+    if (rootX != rootY) { // If roots are different, merge sets
+        if (rank[rootX] < rank[rootY]) { // If rootX's tree is shallower
+            parent[rootX] = rootY; // Make rootY the parent of rootX
+        } else if (rank[rootX] > rank[rootY]) { // If rootY's tree is shallower
+            parent[rootY] = rootX; // Make rootX the parent of rootY
+        } else { // If both trees have the same rank
+            parent[rootY] = rootX; // Make rootX the parent of rootY
+            rank[rootX]++; // Increase the rank of rootX's tree
+        }
+    }
+}
+
+int rootX = find(x); 
+int rootY = find(y);
+Find the roots of the sets containing x and y.
+
+if (rootX != rootY): 
+Check if the roots are different. If they are the same, x and y are already in the same set.
+
+if (rank[rootX] < rank[rootY]) 
+	parent[rootX] = rootY;
+
+Compare the ranks of the roots. 
+If rootX's rank is less than rootY's rank, it means rootX's tree is shallower.
+Make rootY the parent of rootX, effectively attaching the shallower tree under the deeper tree.
+
+
+else if (rank[rootX] > rank[rootY])
+	parent[rootY] = rootX;
+
+If rootX's rank is greater than rootY's rank, it means rootY's tree is shallower.
+Make rootX the parent of rootY, attaching the shallower tree under the deeper tree.
+
+else
+parent[rootY] = rootX;
+rank[rootX]++;
+
+ If both trees have the same rank, choose one as the new root.
+ Make rootX the parent of rootY.
+ Increase the rank of the new root's tree by 1,
+ since its height has increased by merging two trees of the same rank.
