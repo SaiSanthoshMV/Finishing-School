@@ -117,8 +117,8 @@ public class Program2 {
                 }
             }
         }
-        // if (child > 0 && parent == -1) {
-        //     mark[sourceNode] = true;
-        // }
+        if (child > 0 && parent == -1) {
+            mark[sourceNode] = true;
+        }
     }
 }
