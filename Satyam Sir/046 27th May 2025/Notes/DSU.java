@@ -59,6 +59,8 @@ class DSU {
         dsu.union(6, 7);
         dsu.union(5, 6);
         dsu.union(3, 7);
+        dsu.union(4, 8);
+        dsu.union(8, 9);
 
         System.out.println("Find(3): " + dsu.find(3));
         System.out.println("Find(6): " + dsu.find(6));
