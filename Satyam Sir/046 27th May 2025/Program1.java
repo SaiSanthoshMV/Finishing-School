@@ -58,6 +58,21 @@ import java.util.*;
 public class Program1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int
+        String[] ip = sc.nextLine().split(" ");
+        int[] arr = new int[ip.length];
+        for (int i = 0; i < ip.length; i++) {
+            arr[i] = Integer.parseInt(ip[i]);
+        }
+        int buy = -arr[0];
+        int sell = 0;
+        int buyP = 0;
+        int sellP=0;
+        for (int i = 1; i < arr.length; i++) {
+            buyP=buy;
+            buy=Math.max(buyP,sellP-arr[i]);
+            sellP=sell;
+            sell=Math.max(sellP,buyP+arr[i]);
+        }
+        System.out.println(sell);
     }
 }
