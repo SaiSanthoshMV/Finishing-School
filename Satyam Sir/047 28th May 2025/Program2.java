@@ -45,16 +45,15 @@ public class Program2 {
 
     private static int getCount(int n, int e, int[][] queries) {
         int cnt = 0;
+        int comp = n;
         for (int[] q : queries) {
-            if (find(q[0]) != find(q[1]))
+            if (find(q[0]) != find(q[1])) {
                 union(q[0], q[1]);
-        }
-        for (int[] q : queries) {
-            if (find(q[0]) == find(q[1])) {
                 cnt++;
+                comp--;
             }
         }
-        return cnt == n - 1 ? cnt : -1;
+        return comp == 1 ? cnt : -1;
     }
 
     private static int find(int x) {
