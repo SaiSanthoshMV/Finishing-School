@@ -3,7 +3,7 @@ public class Producer implements Runnable
 {
     private CubbyHole cubbyhole;
     private int number;
-    public Producer(CubbyHole c, int number) 
+    public Producer(CubbyHole c, int number)  
     {
         cubbyhole = c;
         this.number = number;
