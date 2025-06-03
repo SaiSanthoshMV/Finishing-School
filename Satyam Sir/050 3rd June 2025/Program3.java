@@ -12,24 +12,12 @@ public class Program3 {
         // System.out.println(rev);
         System.out.println(n == rev);
     }
-
-    private static int cntDig(long n) {
-        int cnt = 0;
+    private static long revNum(long n) {
+        long revNum = 0;
         while (n > 0) {
             long temp = n % 10;
-            cnt++;
-            n = n / 10;
-        }
-        return cnt;
-    }
-
-    private static long revNum(long n) {
-        int cnt = cntDig(n);
-        long revNum = 0;
-        while (cnt-- > 0) {
-            long temp = n % 10;
-            revNum = revNum + temp * (long) Math.pow(10, cnt);
-            n = n / 10;
+            revNum = revNum * 10 + temp;
+            n /= 10;
         }
         return revNum;
     }

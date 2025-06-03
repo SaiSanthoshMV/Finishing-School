@@ -8,17 +8,27 @@ public class Program4 {
         Scanner sc = new Scanner(System.in);
         String s1 = sc.next();
         String s2 = sc.next();
-        int i = 0, j = 0;
-        int cnt = 0;
-        while (i < s1.length() && j < s2.length()) {
-            if (s1.charAt(i) == s2.charAt(j)) {
-                System.out.println(cnt);
-                System.exit(0);
-            }
-            cnt++;
-            i++;
-            j++;
+        System.out.println(strStr(s1, s2));
+    }
+
+    private static int strStr(String s1, String s2) {
+        int n = s2.length();
+        int m = s1.length();
+        if (m > n) {
+            return -1;
         }
-        System.out.println(-1);
+        for (int i = 0; i <= n - m; i++) {
+            boolean flag = true;
+            for (int j = 0; j < m; j++) {
+                if (s1.charAt(j) != s2.charAt(i + j)) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
