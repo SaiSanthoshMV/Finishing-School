@@ -1,0 +1,124 @@
+Isolation ensures that transactions occur independently without interference. 
+
+Even if multiple transactions run concurrently, 
+the result is as if they were executed one after the other (i.e., serially).
+
+
+-->When multiple transactions are happening at the same time, 
+         isolation ensures their intermediate states are hidden from each other.
+--> No transaction can read or change data being used by another incomplete transaction.
+
+
+This prevents issues like:
+Dirty reads – Reading uncommitted data.
+Non-repeatable reads – Data changes between reads in the same transaction.
+Phantom reads – New rows appear in repeated queries.
+
+Imagine two people editing a Google Doc, 
+but only one can submit at a time. Isolation ensures that when Person A submits changes, 
+Person B's view is updated after A finishes. 
+
+
+Let’s say we have a bank account with balance = ₹10,000.
+
+Transaction 1 (T1) – Transfer ₹5,000 to another account.
+Transaction 2 (T2) – Check balance and print statement.
+
+Without Isolation:
+T2 might read balance as ₹5,000 if T1 has deducted but not yet committed.
+This would be a dirty read.
+
+With Isolation:
+T2 will either see ₹10,000 (before T1 commits) or ₹5,000 (after T1 commits), never in between.
+
+
+
+
+What is "Degree" in Isolation?
+
+Each degree defines how much protection is given to a transaction from other transactions 
+happening at the same time.
+
+As the degree increases from 0 to 3, the safety and strictness increases.
+
+Let’s say we have:
+Bank Account with ₹10,000
+Transaction T1: Deduct ₹5,000
+Transaction T2: Read the balance
+
+
+We’ll now explain each degree by how T2 behaves if T1 is happening at the same time.
+
+Degree 0: No Isolation (Very Unsafe)
+
+What it allows: T2 can read data even if T1 hasn’t saved (committed) yet.
+This is called a dirty read.
+
+T1 deducts ₹5,000 → shows ₹5,000 in account (but not committed yet).
+T2 reads balance → sees ₹5,000.
+Then T1 fails and rolls back → balance goes back to ₹10,000.
+Now T2 read wrong data (₹5,000 which never existed permanently).
+
+Allows: Dirty Reads
+Doesn't protect from: Anything
+Very unsafe
+
+Degree 1: Avoid Dirty Read
+What it blocks: T2 cannot read data from T1 until T1 is committed.
+
+But T2 can still read the same data twice and get different values if another transaction modifies it in between.
+
+Example:
+T1 starts and modifies balance.
+T2 tries to read → has to wait until T1 commits.
+No dirty read.
+But if T2 reads again later, value might have changed = non-repeatable read.
+
+ Protects from: Dirty Reads
+ Allows: Non-repeatable reads
+
+Degree 2: Avoid Dirty + Non-Repeatable Read
+What it blocks:
+T2 can’t read uncommitted data
+T2 reads the same data twice → it will see the same value
+
+Example:
+T1 modifies the balance to ₹5000.
+T2 waits till T1 commits.
+
+T2 reads balance → ₹5000.
+T2 reads again → still ₹5000, even if some T3 wants to change it.
+
+Protects from:
+Dirty Reads
+Non-Repeatable Reads
+Still allows: Phantom Reads
+
+Degree 3: Full Isolation (Serializable)
+What it blocks:
+
+T2 is fully protected.
+No dirty read, no non-repeatable read, no phantom read.
+
+Transactions behave like they ran one after another.
+
+Example:
+T1 modifies balance.
+T2 waits until T1 completes.
+T2 reads balance.
+
+Even if many rows or queries are involved (e.g., checking all balances > ₹5000), 
+results are stable and not affected by other transactions.
+
+Protects from all:
+ Dirty Read
+ Non-Repeatable Read
+ Phantom Read
+ Most strict and safe
+
+Summary Table
+Degree	Blocks Dirty Read		Blocks Non-Repeatable Read	Blocks Phantom Read	       Safe Level
+0			 No					 No							No					 Very Unsafe
+1			 Yes					 No							No					 Low
+2			 Yes					 Yes							No					 Medium
+3			 Yes					 Yes							Yes					 Very Safe

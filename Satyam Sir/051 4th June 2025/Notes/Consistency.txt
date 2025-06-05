@@ -1,0 +1,42 @@
+Consistency means:
+A transaction must take the database from one valid state to another valid state, 
+without breaking any rules.
+
+The database should always follow its rules (like constraints, formats, balances, etc.) 
+before and after the transaction.
+
+Simple Explanation:
+Think of Consistency as a promise:
+"No matter what happens in a transaction, the rules of the database are never broken."
+
+It’s like saying:
+If money is deducted from one account, it must be added to another (no missing money).
+If a column cannot be NULL, no transaction should leave it NULL.
+
+Real-Life Bank Example:
+Two accounts:
+A: ₹10,000
+B: ₹5,000
+
+Transaction: Transfer ₹2,000 from A to B.
+
+-- Step 1: A loses ₹2,000
+UPDATE accounts SET balance = balance - 2000 WHERE acc_no = 'A';
+
+-- Step 2: B gains ₹2,000
+UPDATE accounts SET balance = balance + 2000 WHERE acc_no = 'B';
+
+Total before: ₹10,000 + ₹5,000 = ₹15,000
+Total after:	  ₹8,000 + ₹7,000 = ₹15,000 
+
+This is consistent.
+
+But if only A gets deducted and B does not get credited:
+
+New total =     ₹8,000 +  ₹5,000 = ₹13,000 
+Money disappears → violates consistency
+
+Other Rules Consistency Protects:
+Foreign key rules
+Check constraints (like age > 0)
+Unique keys, etc.
