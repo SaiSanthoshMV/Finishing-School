@@ -54,7 +54,6 @@ public class Program3 {
     private static int minTokens(int[] arr, int n, int T) {
         List<Integer> res = new ArrayList<>();
         backtrack(arr, n, T, 0, res);
-        // res.sort(null);
         return res.size() > 0 ? Collections.min(res) : -1;
     }
 
