@@ -40,14 +40,14 @@
 
 import java.util.*;
 
-class Node {
-    int data;
-    Node left, right;
-    public Node(int data) {
-        this.data = data;
-        left = right = null;
-    }
-}
+// class Node {
+//     int data;
+//     Node left, right;
+//     public Node(int data) {
+//         this.data = data;
+//         left = right = null;
+//     }
+// }
 
 public class Program1 {
     private static Node buildTree(int[] inOrder, int[] preOrder, int inStart, int inEnd, int preStart, int preEnd, Map<Integer, Integer> mp) {
