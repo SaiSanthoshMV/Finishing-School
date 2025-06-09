@@ -56,7 +56,7 @@ public class Program1 {
         }
         int rootVal = preOrder[preStart];
         Node root = new Node(rootVal);
-        int inRootInd =mp.get(rootVal);
+        int inRootInd = mp.get(rootVal);
         int leftSize = inRootInd - inStart;
         root.left = buildTree(inOrder, preOrder, inStart, inRootInd - 1, preStart + 1, preStart + leftSize, mp);
         root.right = buildTree(inOrder, preOrder, inRootInd + 1, inEnd, preStart + leftSize + 1, preEnd, mp);
