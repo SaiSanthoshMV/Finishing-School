@@ -1,7 +1,5 @@
 /*
 
-
-
 // P-1 Palindrome
 
 
