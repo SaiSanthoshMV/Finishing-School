@@ -1,0 +1,328 @@
+Consider the array A[] = [6, 4, 8, 1, 3]. Apply the insertion sort to sort the array.
+Consider the cost associated with each swap is 25 rupees.
+
+What is the total cost of the insertion sort when element 1 reaches the first position of the array?
+
+(a) 50
+
+(b) 25
+
+(c) 75
+
+(d) 100
+
+==============================================================================================================
+What is the output of the following code?
+#include <stdio.h>
+
+int main() {
+    register static int i = 10;
+    i = i;
+    printf("%d\n", i);
+}
+
+Options
+
+(a) 10
+
+(b) 11
+
+(c) Compilation Error
+
+(d) Unpredictable behaviour
+
+==============================================================================================================
+Is it possible to store a doubly linked list using only one pointer with every node?
+
+○ Yes, possible by storing XOR of addresses of previous and current nodes.
+
+○ Yes, possible by storing XOR of addresses of previous and next nodes.
+
+○ Yes, possible by storing XOR of addresses of current and next nodes.
+
+○ Not possible
+
+=============================================================================================================
+What is the output of the below query?
+SELECT COUNT(*)
+FROM (
+    (SELECT Borrower, BankManager
+     FROM BankLoan) AS S
+  NATURAL JOIN
+    (SELECT BankManager, LoanAmount
+     FROM BankLoan) AS T
+) ;
+
+Table – BankLoan
+Borrower	BankManager	LoanAmount
+Ramesh		Sunderajan	10000.00
+Suresh		Rangopal	5000.00
+Mahesh		Sunderajan	7000.00
+
+Options
+
+(a) 3
+
+(b) 9
+
+(c) 5
+
+(d) 7
+
+==============================================================================================================
+Considering the billing table, what would be the output of the query?
+SELECT dept_name, avg_salary
+FROM (
+    SELECT dept_name,
+           AVG(salary) AS avg_salary
+    FROM billing
+    GROUP BY dept_name
+) AS X
+WHERE avg_salary > 30000;
+
+Table – billing
+empid	name		dept_name	salary
+22121	Einstein	Physics		35000
+22111	Su Sid		Finance		20000
+14444	Ravin		History		46000
+45645	Harish		History		35000
+32341	Koti		Finance		27000
+41545	Rai		Comp_sci	20000
+45555	Lee		Elec_Eng	47000
+
+
+Options
+
+(a) Finance
+
+(b) History
+
+(c) Elec Eng
+
+(d) We could not have a subquery in FROM
+
+
+
+===============================================================================================================
+Radhika’s ability
+Radhika had a great eye for details when it comes to distinguishing between set of data
+& draw certain patterns from them. So one day she stumbled upon a challenging
+problem where there was given an array nums consisting of positive integers and an
+integer k.
+
+She had to Partition the array into two ordered groups such that each element is in
+exactly one group. A partition is called great if the sum of elements of each group is
+greater than or equal to k.
+
+She had to return the number of distinct great partitions. Since the answer may be too
+large, she needs to return it in modulo 10⁹ + 7.
+
+Two partitions are considered distinct if some element nums[i] is in different groups
+in the two partitions.
+
+Input:
+k = 4,  
+length of array = 4,  
+nums = [1, 2, 3, 4]
+
+Output:
+6
+
+Explanation:
+The great partitions are:
+([1,2,3], [4]),
+([1,4], [2,3]),
+([2,3], [1,4]),
+([1,3], [2,4]),
+([2,4], [1,3]),
+([4],   [1,2,3])
+
+
+Constraints:
+
+1 ≤ nums.length, k ≤ 10³
+
+1 ≤ nums[i] ≤ 10³
+
+Sample Input
+4
+1 2 3 4
+
+Sample Output
+6
+
+Sample Input
+4
+3 3 3
+
+Sample Output
+0
+
+
+
+
+
+
+
+
+
+======================================================================================================================
+Triangular Assortment
+Given a triangular assortment of size N where the total number of rows is N, which is always even. The triangles are numbered starting with the triangle in the first row, and increasing left to right and top to bottom. An example of such an arrangement with N = 6 is given below:
+           1
+         2   3
+       4   5   6
+     7   8   9  10
+  11  12  13  14  15
+16  17  18  19  20  21
+
+The task is to find minimum distance d from a given starting triangle (S) to all the other triangles. Two triangles are called adjacent if they have a common edge. From a triangle, you can only go to an adjacent triangle. The distance between two triangles is the minimum number of edges to be crossed to reach the destination triangle from the starting triangle. The distance between any triangle and each of its adjacent triangles is 1 unit.
+
+Input:
+Two space-separated integers N & S, denoting the size of the triangular assortment (N) and the number assigned to the starting triangle (S), respectively.
+
+Output:
+Space-separated distances d to all the triangles, in order of triangle number from 1 to N·(N+1)/2.
+
+Constraints:
+1 ≤ N/2 ≤ 10
+1 ≤ S ≤ N·(N+1)/2
+
+Sample Input
+6 8
+
+Sample Output
+3 2 1 2 3 2 1 0 1 2 1 2 3 2 3 4 3 2 3 4 5
+
+==========================================================================================================================
+K-4 City
+In the near future, human engineers have realized that the optimal model for organizing
+infrastructure in cities is the fully connected graph. Kura recently moved into the town of
+Koenigsberg. It’s a small town that consists of only 4 houses, for each of its inhabitants.
+As the new arrival, Kura discovers that he has three neighbors: Leon, Lieb and Hamil.
+
+Also, he finds a map of the town in his house. It looks like this in a weighted-graph format:
+        (ha)
+    h __________ a
+    | \       	     |
+  (hb) \(hc)      |(ca)
+    |    	\       |
+    | 	  \  | 
+    b ____(bc)___c
+       \(ab)
+
+
+Kura’s house is marked as h, Leon’s house is marked as a, Lieb’s house is marked as b,
+and Hamil’s house is marked as c, and ha, hb, hc, ab, bc & ca represent
+the respective distances between the houses.
+
+From the map, Kura was able to determine that the distance from any place ‘x’ on the map to
+a place ‘y’ on the map is the same as the distance from ‘y’ to ‘x’.
+
+After spending the day unpacking, Kura decided to visit 2 of his neighbors. Since he has limited
+energy to walk, you must help Kura determine the minimum distance he must walk to meet any 2
+of his neighbors and come back home. He doesn’t mind visiting the same neighbor or passing the
+same road multiple times. The only goal is to minimize the total distance traveled.
+
+Input:
+One line containing six space-separated integers:
+ha hb hc ac ab bc
+
+representing the distances ha, hb, hc, ac, ab, bc as described above.
+
+Output:
+A single number representing the minimum distance that Kura needs to travel to visit any 2 of
+his neighbors and return home.
+
+Constraints:
+1 ≤ ha, hb, hc, ac, ab, bc ≤ 10^12
+
+Sample Input
+3 2 8 8 1 4
+
+Sample Output
+6
+
+
+Sample Input
+8 9 7 2 9 4
+
+Sample Output
+17
+
+=====================================================================================================================
+Wealth and Magic
+Mandrake, the Magician, has decided to distribute his wealth among his best friends, Lothar and Magnon. Now he has N coins each having some value A[i] (1 ≤ i ≤ N). Being a great magician, Mandrake can change the value of all the coins except the first and the last one. He can change the value of the i-th coin to half of the sum of the values of the (i–1)-th and (i+1)-th coins, but two conditions must be fulfilled:
+
+The values of both the (i–1)-th and (i+1)-th coins must be even.
+
+If the j-th coin’s value is changed after the i-th coin’s value, then j > i.
+
+Once he’s finished his magic, he will distribute his coins as follows:
+	Simultaneously give one coin from the back to Lothar
+	and one coin from the front to Magnon,
+	repeating until all coins are given away.
+	If N is odd, the middle coin goes to a third friend, Theron.
+
+Mandrake wants to maximize the absolute difference between the total value given to Lothar and the total value given to Magnon (after his magical adjustments). Your task is to compute that maximum difference.
+
+Input
+First line: N
+
+Second line: N space-separated integers A[1], A[2], …, A[N]
+
+Output
+A single integer: the maximum absolute difference between Lothar’s sum and Magnon’s sum.
+
+Constraints
+1 ≤ N ≤ 20
+1 ≤ A[i] ≤ 10⁴
+
+
+Sample Input
+10
+5 6 5 2 1 7 9 7 2 5
+
+Sample Output
+20
+
+
+=================================================================================================================================
+Elastic Collisions
+ThunderCracker loves Physics! Recently, he learned about Elastic Collisions. A perfectly elastic collision is the one where the total momentum of the colliding bodies does not change after the collision. A very important property of elastic collisions that ThunderCracker observed is that, if the two colliding bodies have equal masses, their velocities will be exchanged after the collision.
+
+ThunderCracker decided to conduct an experiment to demonstrate this property. He bought N balls, all having equal masses, and a long board having length L (in meters). He placed the balls in a straight line on the board such that the i-th ball is at a distance A[i] from the left end (in meters).
+
+At time t = 0, he gave each ball a velocity V[i] (in meters per second). (V[i] ≠ 0 for any i.) A negative velocity indicates that the ball was pushed to the left, while a positive velocity indicates motion toward the right.
+
+ThunderCracker was immensely happy to see the large number of collisions that happened on the board. But the balls soon started to fall off the board (from both ends), and finally there was no ball left. He is now interested to know:
+
+At what time did the last ball fall?
+
+Will you help him?
+
+Note:
+A ball will fall off the board when it is moving left and reaches x = 0, or when it is moving right and reaches x = L. (Here x is measured from the left end.)
+It is guaranteed that eventually all the balls will fall off the board.
+
+Input
+The first line contains two space-separated integers, N and L, denoting the number of balls and the length of the board.
+The second line contains N space-separated integers A[1…N], the initial positions of the balls (all distinct).
+The third line contains N space-separated integers V[1…N], the velocities assigned to the balls.
+
+Output
+Print two space-separated integers P and Q such that the last ball falls off at time P/Q (in lowest terms). If P = 0, print 0 1.
+
+Constraints
+1 ≤ N, L ≤ 10^3
+0 ≤ A[i] ≤ L
+–10^3 ≤ V[i] ≤ 10^3   (V[i] ≠ 0 for all i)
+
+Sample Input
+2 3
+1 2
+1 –1
+
+Sample Output
+2 1
+
