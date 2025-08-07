@@ -1,0 +1,309 @@
+Question 5
+
+
+There are five people, A, B, C, D, and E, such that:
+
+
+
+I. C is taller than A, who is taller than B.
+
+II. E is shorter than B.
+
+III. E is taller than D.
+
+IV. E is shorter than only two people.
+
+mentigmati.co
+
+
+If the first three statements are true, what can be said about the fourth statement?
+
+
+Select an option
+
+1.True
+
+2.False
+
+3.Uncertain
+
+=======================================================================================
+
+Question 1
+
+
+Assume that you are working on a project where you are required to sort a list of students based on their grades, in descending order.
+You have already created an ArrayList of student objects when each object contains the student's name and grade.
+You need to sort the list in descending order of grades to display the top-performing students first.
+What code should be written to replace the "???" in the given Java code to sort the given ArrayList in descending order? 
+Select the correct answer from the given choices.
+
+1 import java.util.*;
+
+2
+
+3 public class Example1
+
+4 public static void main(String[] args) {
+
+5
+
+List<Integer> numbers = new ArrayList<>();
+
+6
+
+7
+
+numbers.add(1);
+
+8
+
+9
+
+numbers.add(2);
+
+numbers.add(3);
+
+10
+
+numbers.add(4);
+
+11
+
+???
+
+12
+
+13
+
+System.out.println(numbers);
+
+14
+
+}
+
+15
+
+)
+
+
+Select an option
+
+1.numbers.sort(Collections.reverseOrder());
+
+2.numbers.sort(Comparator.reverseOrder());
+
+3.Collections.sort(numbers, Collections.reverseOrder());
+
+4.Collections.sort(numbers, Comparator.reverseOrder());
+
+=============================================================================
+
+Question 3
+
+
+Read the following passage and answer the given question.
+
+
+The coastal ecosystems of mangroves, tidal marshes, and seagrass meadows provide numerous benefits and services that are essential for climate change adaptation along coasts globally.
+Including protection from d storms and sea level rise, prevention of shoreline erosion, regulation of coastal water quality, 
+provision of habitat for commercially important fisheries and endangered marine species, and food security for many coastal communities.
+Additionally, these ecosystems sequester and store significant amounts of coastal blue carbon from the atmosphere and ocean and are now recognized for their role in mitigating climate change.
+
+
+Despite these benefits and services, coastal blue-carbon ecosystems are some of the most threatened ecosystems on Earth, with an estimated 340,000 to 980,000 hectares being destroyed each year.
+It is estimated that up to 67%, at least 35%, and 29% of the global coverage of mangroves, tidal marshes, and seagrass meadows, respectively, have been lost.
+If these trends continue at current rates, a further 30-40% of tidal marshes and seagrasses and nearly all unprotected mangroves could be lost in the next 100 years.
+When degraded or lost, these ecosystems can become significant sources of greenhouse gases like carbon dioxide.
+
+Question: Which of the given options is not a benefit provided by the coastal ecosystems?
+
+Select an option
+
+1.Protection from sea storms
+
+2.Regulation of coastal water quality
+
+3.Mitigating climate change with blue carbon
+
+4.Protection from drought
+
+================================================================================================
+
+Question 7
+
+Fill in the blank(s) with the correct word(s)
+
+She had prepared diligently for her______exams and was delighted to have achieved______excellent grades.
+
+1. no article, the
+2. ⁠the, no artice
+3. ⁠an, the
+4. ⁠no article, an article
+
+======================================================================================================
+
+Question 3
+
+Three cars, A, B, and C are traveling equal distances with speeds in the ratio of 1:5:4, respectively. What is
+the corresponding ratio of the time taken by each car to travel the distance?
+
+Select an option
+
+A. 12:5:7
+B. 15:5:8
+C. 20:4:5
+D. 13:2:5
+
+=========================================================================================================
+
+Question 4
+
+In the question given below, there are two statements, followed by two conclusions marked I and II. 
+Consider the statements to be true, even though they seem to be at variance from commonly known facts. 
+Find out which of the given conclusion(s) logically follows the given statements. Mark your answer as per the given options:
+
+
+Statements:
+
+A. Some flutes are violins.
+
+B. All violins are drums.
+
+Conclusion:
+
+1. Some flutes are drums.
+
+II. Some drums are violins.
+
+
+Select an option
+
+1.Only conclusion I follows
+
+2.Only conclusion II follows
+
+3.Neither conclusion I nor conclusion II follows
+
+4.Both conclusion I and conclusion II follow
+
+=============================================================================================
+
+Question 4
+
+Two individuals, A and B, working alone can make 48 bricks in 12 hours and 16 hours, respectively, 
+if they work alternately, starting with A, how many hours will it take to make 14 bricks?
+
+Select an option
+
+1. 5hours
+2. 4hours
+3. 8hours
+4. 7hours
+
+====================================================================================================
+
+Question 2
+
+Five girls P, Q, R, S, and T are sitting in a row, facing North, but not necessarily in the same order.
+T is sitting to the immediate left of R, who is sitting at the right end. S is saran adiacent to P and T. 
+Who is sitting in the middle of the row?
+
+Select an option
+1. P
+2. Q
+3. S
+4. T
+
+=====================================================================================================
+
+Question 2
+
+One unit of an article costs $10 to a shopkeeper. If each box of the article, which carries 10 units,
+is sold at $120 to a customer, how many boxes does the shopkeeper need to sell to make a $100 profit?
+
+Select an option
+
+1. 10
+2. 8
+3. 6
+4. 5
+
+====================================================================================================
+
+Question 7
+
+Which line in the following source code has an error?
+
+1  class abc
+
+2  {
+
+3   public static void main(String args[])    // Line 1
+
+4  {
+
+5    int a, b;
+
+6  
+
+7    for( a = 1 b = 4 a < b a ++ , b--)       // Line 2
+
+8    {
+
+9      System.out.println " a ="+a) ;         // Line 3
+
+10     System.out.println (" b ="+b) ;
+
+11          }
+
+12      }
+
+13  }
+
+Select an option
+
+1. Line1
+2. Line2
+3. Line3
+4. No Error
+
+======================================================================================== 
+Question 7
+
+Select the correct option that can replace the question mark (?) in the series below:
+
+A,C,B,D,D,F,G,I,?,?
+    
+    
+Select an option    
+
+1. K,M
+2. L,M
+3. M,L
+4. K,L
+
+=================================================================================================
+
+Question 9
+
+Rearrange the following phrases to form a complete sentence:
+Note: The phrase numbered 1 is fixed.
+
+1 NO sooner had l
+
+
+(A) join in for a delight visit
+(B) than the guest came,
+(C) arrived at the house,
+(D) knocking at the door, excited to
+
+Select an option
+
+1. C B D A
+2. B A D C
+3. C D A B
+4. D C B A
+
+=================================================================================================
+

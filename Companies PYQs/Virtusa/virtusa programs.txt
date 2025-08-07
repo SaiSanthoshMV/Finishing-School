@@ -1,0 +1,1393 @@
+1. PAIR PROBLEM 
+
+
+Lucy has an integer array A of size N , All the elements in the array are distinct.
+She can perform the following operation any number of times.
+-> choose two numbers i and j in such a way that the product of the LCM(i,j) and HCF(i,j) is present in array A.
+
+your task is to help Lucy find and return an integer Value, representing the maximum number of valid(i,j) pairs 
+which satisfy the given conditions.
+
+note
+-----
+-> the least common multiple (LCM) of two numbers is the smaller number which is a multiple of both.
+
+-> the highest common factor(HCF) is the greatest number which divider each of the two or more numbers.
+
+-> the pair of (x,y) is different from the pair (y,x).
+
+input specification:
+-------------------
+
+input1: An integer value N.
+input2: An integer array A.
+
+output specification:
+---------------------
+
+Return an integer value, representing the maximum number of valid(i,j) pairs which satisfy the given condition.
+
+Example 1:
+----------
+
+input1: 5 
+input2: (1,2,3,4,5)
+
+output: 10
+
+
+explanation:
+------------
+
+Here , there are 5 elements (1,2,3,4,5) in the integer array A.
+the possible valid pairs after performing the above operation are:
+
+---------------------------------------------
+Pairs    LCM       HCF     Product(LCM*HCF)
+---------------------------------------------
+(1,1)     1        1         1
+(1,2)     2        1         2
+(2,1)     2        1         2
+(1,3)     3        1         3
+(3,1)     3        1         3
+(1,4)     4        1         4
+(4,1)     4        1         4
+(2,2)     2        2         4
+(1,5)     5        1         5
+(5,1)     5        1         5
+---------------------------------------------
+
+The above 10 pairs are the maximum number of valid pairs since the products of their LCM and HCF are present in array A.
+Hence, 10 is returned as the output.
+
+
+Example 2
+----------
+
+input1: 2
+input2: (10,2)
+
+output: 6
+
+
+explanation:
+-------------
+
+Here , there are 2 elements (10,2) in the integer array A. The possible valid pairs after performing the above 
+operation are:
+
+------------------------------------------------------
+Pairs          LCM       HCF         product(LCM*HCF)
+------------------------------------------------------
+(5,2)           10        1            10
+(1,2)           2         1             2
+(2,1)           2         1             2
+(1,10)          10        1            10
+(10,1)          10        1            10
+(2,5)           10        1            10
+------------------------------------------------------
+
+
+The above 6 pairs are the maximum number of valid pairs since the 
+products of their LCM and HCF are present in array A. Hence,6 is returned as the output.
+
+=========================================================================================================================
+
+2.REDUCE TILL ZERO
+
+
+
+Dev loves the number zero. HE gives Andrew two integers X and Y and asks him to perform  the steps shown below 
+on X and Y, till the value of Y has been reduced to zero. The undernoted steps needs to be followed sequentially:
+
+
+-> if X<Y , then swap the values of X and Y.
+
+-> if Y=0, then return X.
+
+-> Otherwise, let T = X-Y.
+
+-> Set X=Y and then set Y=T.
+
+-> Repeat from step 1.
+
+Your task is to help Andrew find and return an integer value representing the value of X, when the value of Y has
+been reduced to zero.
+
+NOTE : At least one of the integers X or Y will be an non-zero integer
+
+
+input specification:
+--------------------
+
+input1: An integer value X , representing the first number.
+input2: An integer value Y, representing the second number.
+
+
+output specification:
+--------------------
+
+Return an integer value representing the value of X when the value of Y has been reduced to zero.
+
+
+Example 1:
+----------
+
+input1: 3
+input2: 7
+
+output: 1
+
+
+Explanation:
+-------------
+
+Here in this example, the initial values of X and Y are 3 and 7 , respectively the example is solved in 7 iterations
+following steps 1 to 5 as:
+
+-> Iteration 1 : X=3 and Y=7
+
+1. Swap the values of X and Y , since the X<Y condition is true.
+
+2. Now X=7 and Y=3,and since Y is not equal to 0, we do not return X.
+
+3.T=X-Y=7-3=4,T=4
+
+4.Set X=Y which makes X=3 and set Y=T which makes ,y=4
+
+5. repeat step 1
+
+
+The new values of X and Y after the first iteration are 3 and 4 respectively .We repeat the process till iteration 7.
+
+ Iteration 7: X=0 and Y=1
+ 
+ 1. Swap the values of X and Y , since the X<Y condition is true.
+ 
+ 2. Now X=1  and Y=0, since Y is Equal to 0, we return X.
+ 
+ 
+ Since the value of Y becomes 0 , we return the value of X as 1. Hence 1 is retuned as the output.
+ 
+ 
+ 
+ 
+ Example 2:
+ ----------
+ 
+ input1: 0
+ input2: 3
+ 
+ 
+ output:3
+ 
+ 
+ Explanation:
+ ------------
+ 
+ 
+ Here in this example, the initial values of X and Y are 0 and 3, respectively  this example is solved in 1 iteration 
+ following Steps 1 and 2 as:
+ 
+ Iteration 1: X=0 and Y=3
+ 
+ 1.swap the values of X and Y , since the X<Y condition is true
+ 
+ 2. Now X=3 and Y=0 , since Y is equal to 0 , we return X.
+ 
+ 
+ since the value of Y becomes 0 ,we return the value o f X as 3. Hence 3 is returned as output.
+ 
+ 
+ 
+ 
+ 
+ 
+ =========================================================================================================================================================
+ 
+3. FROG IN THE POND
+
+
+
+Near your house there is a pond that has N lily pads arranged in sequence . An integer array A contains the count 
+of fallen fresh petals on each lily pad. A happy frog wants to gather as many petals as possible by jumping from one
+lily pad to the next adjacent lily pad in either direction.
+
+
+The frog can begin gathering petals from any lily pad, but can only jump a maximum of N-2 times.
+Your task is to find and return an integer value representing the maximum number of petals that the frog can
+collect in a maximum of N-2 jumps.
+
+NOTE:
+
+ -> Assume 1-based indexing
+  
+ -> if the frog lands on a lily pad, it will collect all the petals on the pad.
+ 
+ -> The frog can begin collecting petals from any lily pad it desires.
+ 
+ -> N is always greater than 2.
+ 
+ 
+input specification:
+-------------------
+
+input1: An integer value N , representing the number of lily pads.
+
+input2: An integer array A , containing the count of fallen petals on N lily pads.
+
+
+Output specification:
+----------------------
+
+Return an integer value representing the maximum number of petals that the frog can collect in a maximum of N-2 jumps.
+
+
+
+Example 1
+---------
+
+input1 : 3
+input2 :(2,3,1)
+
+Output : 5
+
+Explanation:
+------------
+
+Here in this example , there are 3 lily pads and the number of fresh petals on each lily pad is as (2,3,1). 
+The maximum number of jumps that the frog can make is N-2 =3-2 =1. The frog will begin from the 2nd lily pad ,
+collecting 3 petals. Then he will jump to the lily pad at position 1, collecting 2 petals. The total number of 
+petals collected is 3+2 =5 .Hence, 5 is returned as the output.
+
+
+ Example 2:
+ ----------
+ 
+ input 1: 4
+ input 2: (1,3,6,2)
+ 
+ output: 11
+ 
+ Explanation:
+ ------------
+ 
+ 
+ Here in this example, there are 4 lily pads and the number of fresh petals on each lily pad is (1,3,6,2). 
+ The maximum number of jumps that the frog can make is N-2 =4-2 =2. The frog will begin from the 2nd lily pad,
+ collecting 3 petals. Then he will jump to the lily pad at position 3, collecting 6 petals. Lastly , 
+ he will jump to the lily pad at position 4 , collecting 2 petals. The total number of petals collected is 3+6+2 =11.
+ Hence ,11 is returned as the output.
+ 
+ 
+ 
+=======================================================================================================================
+
+4.DIVIDE STRING
+
+
+
+You are given a string S, You have to divide the string into subsequences such that every character of S is present in 
+only one subsequence and every subsequence has the same set of characters . Your task is to find and return the maximum
+possible number of subsequences into which you can divide the given string.
+
+
+
+NOTE: Every subsequence will have same set of characters but their frequency can vary.
+
+
+input specification:
+--------------------
+
+input1: A string value S
+
+
+output specification
+--------------------
+Return an integer value representing the maximum possible number of subsequences into which you can divide the given 
+string.
+
+
+Example 1:
+-----------
+
+input 1: abcabcab
+
+Output : 2
+
+
+Explanation:
+------------
+
+Here , the given string is " abcabcab ", We can divide the string into two subsequences "abca",and "bcab". 
+Both have the same sets of characters,i.e,,['a','b','c'].
+Therefore,, 2 is returned as the output.
+
+
+Example 2:
+----------
+
+input2: aaabbbccca
+
+output: 3
+
+Explanation:
+------------
+
+Here , the given string is " aaabbbccca", We can divide the string into three subsequences "abca", "abc", and "abc".
+All have the same sets of characters i.e.['a','b','c']
+Therefore, 3 is returned as the output.
+
+
+
+=======================================================================================================================
+
+5. COUNT WRAPPED ITEMS
+
+
+
+You are given a string S consisting of lowercase English letters and digits, where the letters represent items and the
+digits represent packaging lines. You have to count how many items are wrapped by packing lines, i.e., how many letters
+have a digit on the left and a digit on the right in the string . Your task is to find and return an integer value 
+representing the number of items wrapped in packaging lines.
+
+
+
+input specification:
+--------------------
+
+input 1: A string S containing only lowercase English letters and digits (0-9).
+
+
+
+Output specification:
+---------------------
+
+Return an integer value representing the number of items wrapped in packaging lines.
+
+
+
+Example 1:
+--------- 
+
+input1: 1a2b3c4d5
+
+output: 4
+
+
+Explanation:
+------------
+
+
+Here, the string S is " 1a2b3c4d5 " . We can find the wrapped items as below.
+
+-> 'a' between 1 and 2
+-> 'b' between 2 and 3
+-> 'c' between 3 and 4
+-> 'd' between 4 and 5
+
+The count of such items is 4, hence 4 is returned as the output.
+
+
+Example 2:
+----------
+
+input 1: 5aart6i7io8o5o56
+Output: 3
+
+
+Explanation:
+-------------
+Here , the string S is " 5aart6i7io8o5o56" . We can find the wrapped items as below.
+
+-> 'i' between 6 and 7
+-> 'o' between 8 and 5 
+-> 'o' between 5 and 5
+
+The count of such items is 3, hence 3 is returned as the output.
+
+
+=======================================================================================================================
+
+6.QUEST FOR THE HIDDEN CODE
+
+
+In a remote village, there existed two mystical strings S1 and S2. in these strings was hidden a secret encoded in 
+their characters.
+
+Your task is to find and return an integer value representing the encoded secret of the strings by finding the sum of 
+the ASCII values of the characters in the longest common substring between these two strings . Return o if there is no 
+common substring.
+
+
+NOTE:
+
+-> String S1 and S2 contain English alphabets in lower case only.
+
+-> if there are multiple longest common substrings , then return the ASCII sum of the substring that occurs first.
+
+
+Input specification:
+--------------------
+
+input1: A string value S1
+input2: A string value S2
+
+
+Output specification:
+---------------------
+
+Return an integer value Representing the encoded secret of the strings by finding the sum of the ASCII values of the 
+characters in the longest common substring between these two strings.
+
+
+
+
+Example 1:
+----------
+
+input1: adventure
+input2:future
+
+
+Output: 448
+
+Explanation:
+------------
+Here , the string S1 is "adventure" and S2 is "future" .The longest common substring between S1 and S2 is "true"
+with their ASCII values summing up to 448 (116 + 117+114+101).Therefore, 448 is returned as the output.
+
+
+Example 2:
+----------
+
+input1: mystery
+input2: legend
+
+Output: 101
+
+Explanation:
+------------
+
+Here, the string S1 is "mystery" and S2 is "legend" .The longest common substring between S1 and S2 is "e", 
+with its ASCII value summing up to 101, Therefore, 101 is returned as the output.
+
+
+=====================================================================================================================================
+
+7.MINIMUM LENGTH 
+
+
+You are given a string S ,You need to find a substring of string  S such that there is at least one character whose 
+frequency is equal in both the original string S and its substring . Your task is to find and return an integer value
+representing the minimum length of the substring that satisfies the given condition.
+
+
+input specification:
+--------------------
+
+input1: A string value S.
+
+Output specification:
+---------------------
+
+Return an integer value representing the minimum length of the substring that satisfies the given condition.
+
+
+Example 1:
+----------
+
+input 1:  abcadbcd
+
+output : 4
+
+
+Explanation:
+-----------
+
+Here, the given string is "abcadbcd" . Here are all the possible substrings with minimum length that have at least 
+one character whose occurrence is the same in both the substring and the string S.
+
+-> Substring "abca" of length 4 and the given string have the same occurrence of 'a'.
+
+-> Substring "bcadb" of length 5 and the given string have the same occurrence of 'b'.
+
+-> Substring "cadbc" of length 5 and the given string have the same occurrence of 'c'.
+
+-> Substring "dbcd" of length 4 and the given string have the same occurrence of 'd'.
+
+
+The substrings "abca" and "dbcd" have a minimum length of 4 , so  4 is returned as the output.
+
+
+Example 2:
+----------
+
+input 1: xxyy
+
+output: 2
+
+Explanation:
+------------
+
+Here , the given string is "xxyy". Here are all the possible substrings with minimum length that have at least one
+character whose occurrence is the same in both substring and the string S:
+
+-> Substring "xx" of length 2 and the given string have the same occurrence x.
+
+-> Substring "yy" of length 2 and the given string have the same occurrence y.
+
+The substrings "xx" and "yy" have a minimum length of 2, so 2 is returned as an output.
+
+===============================================================================================================================================
+
+8.ELECTRIC WIRE GRID
+
+
+
+You are given an integer array A of size N. where each element represents the current in a wire segment. 
+You can invert (multiply by -1) up to X segments, but two consecutive segments cannot be inverted together due to 
+stability constraints. Your task is to find and return an integer value representing the maximum possible net current
+after applying the best inversions. if no valid inversion can be made, return the sum of the original array. 
+
+
+input specification:
+--------------------
+
+input1:An integer value N representing the number of segments.
+
+input2:An integer value X representing the maximum inversion of segment. 
+
+input3:An integer array A representing the current values.
+
+Output specification:
+---------------------
+
+Return an integer value representing the maximum possible net current after applying the best inversions.
+if no valid inversion can be made, return the sum of original array.
+
+
+Example 1:
+---------
+
+input1: 5
+input2: 2
+input3:(-3,-6,7,-8,5)
+
+output :23
+
+Explanation:
+------------
+
+here, there are 5 segments with current values as (-3,-6,7,-8,5) and X=2.we can find the maximum possible net
+current as below:
+
+-> invert -6 -->6
+
+-> invert -8 -->8(skipping adjacent -6 and -8 to satisfy constraints)
+
+The maximum net current will be (-3) + 6 + 7 + 8 + 5 = 23.Hence 23 is returned as the output.
+
+
+
+Example 2:
+----------
+
+input1: 3
+input2: 2
+input3: (-13,-19,-5)
+
+
+output: 1
+
+Explanation:
+-------------
+
+Here, there are 3 segments with current values as (-13,-19,-5) and X=2. we can find the maximum possible net 
+current as below:
+	invert -19 --> 19 
+	
+The maximum net current will be (-13) + 19 + (-5) = 1. Hence , 1 is returned as the output.
+
+
+============================================================================================================================================================
+
+9.COUNT SUBSETS
+
+
+You are given an integer array of N positive number. Your task is to find and return an integer value representing 
+the minimum number of subarrays needed to arrange the elements in such a way that each element is positioned at an 
+index where its value is greater than or equal to its index.
+
+NOTE:
+   -> you are allowed to rearrange the elements as required>
+   
+   -> Assume ! based indexing
+   
+   
+   
+input specification:
+--------------------
+
+input1:An integer value N , representing the number of array elements.
+
+input2: An integer array.
+
+
+Output specification:
+---------------------
+
+Return an integer value representing the minimum number of subarrays needed in arrange the elements in such a way
+that each element is positioned at an index where its value is greater than or equal to its index.
+
+example 1:
+----------
+
+input1: 5
+input2: (5,5,5,1,2)
+
+output:1
+
+
+Explanation:
+------------
+
+Here,,the given array is(5,5,5,1,2) . The array can be arranged as (1,2,5,5,5) ,where the value of each element is
+greater than or equal to its corresponding index. Since the count of the subarray is 1, 1 is returned as the output.
+
+
+Example 2:
+----------
+
+input1: 8
+input2: (6,1,6,1,3,2,6,1)
+
+output: 3
+
+===================================================================================================================================================
+
+10. 5 DAYS CHALLENGE
+
+
+Alice is undertaking a 5-day challenge to read N books , each book containing A pages . 
+Alice must complete the books by disturbing the pages as evenly as possible .
+Your task is to find and return an integer value representing the minimum number 
+of pages she must read in a day to finish all the books in exactly 5 days.
+
+
+input specification:
+--------------------
+
+input1: An integer value N, representing the number of books.
+
+input2: An integer array A, representing the number of pages in each book.
+
+Output specification:
+--------------------
+
+Return an integer value representing the minimum number of pages she must read in a day to finish all the books
+in exactly 5 days.
+
+Example 1:
+----------
+
+input 1: 5
+input 2: (4,10,20,30,40)
+
+output: 20
+
+
+Explanation:
+------------
+
+Here, the given array is (4,10,20,30,40) so Alice must read the pages in the given manner.
+
+	->The first way : (1,1,1,1,100),where Alice reads 1 page each for the first 4 days and 100 pages on the 
+	last day . so the minimum number of pages read in a day is 1.
+	
+	-> The optimal way: Since we have to evenly distribute the pages so the distribution can be (20,21,22,21,20) , 
+	where the number of pages read by Alice in 5 days are 20,21,22,21 and 20, respectively ,
+	so the minimum number of pages read in a day is 20.
+	
+Therefore, 20 is  returned as the output.
+
+
+Example 2:
+----------
+
+input1: 5
+input2: (1,1,1,1,1)
+
+output:1
+
+Explanation:
+------------
+Here, the given array is (1,1,1,1,1) so Alice must read the books in the given manner.
+
+-> There is only one way to read the books read the books: read 1 page everyday (1,1,1,1,1) so the minimum number 
+of pages read in a day is 1.
+
+Therefore, 1 is returned as the output.
+
+
+
+============================================================================================================================================================
+11. REDUCE THE BILL
+
+
+Darryl visits a clothing store to buy some clothes. The clothing store has an ongoing special offer that helps
+customers save their money.The customers must convert their bill amount of N dollars into its binary equivalent.
+Then they must flip any single bit with the aim of decreasing their bill amount when it is converted back to
+its decimal equivalent. Your task is to help Darryl find and return an integer value representing the minimum amount
+of dollars he must pay for his shopping after availing the offer.
+
+Note:
+• N is an integer value.
+• Flipping a bit means converting bit 0 to bit 1 or vice versa.
+• Assume 1 based indexing for bits, starting from left to right.
+• Darryl must flip a bit.
+
+
+Input Specification:
+---------------------
+
+input1: An integer value N, representing the initial bill amount in dollars.
+
+Output Specification:
+----------------------
+Return an integer value representing the minimum amount of dollars he must pay for his shopping after availing 
+the offer.
+
+Example 1: 
+----------
+input1: 12
+
+Output : 4
+
+Explanation:
+------------
+12 can be represented as 1100 in binary form. On flipping one bit at a time we can get the following bill amounts
+
+• By flipping the 1st bit, we obtain 0100 which is 4 in decimal from.
+
+• By flipping the 2nd bit, we obtain 1000 which is 8 in decimal from.
+
+• By flipping the 3rd bit, we obtain 1110 which is 14 in decimal from.
+
+• By flipping the 4th bit, we obtain 1101 which is 13 in decimal from.
+
+Clearly, the minimum possible final bill amount value is 4 dollar.Hence, 4 is returned as the output.
+
+Example 2:
+----------
+
+input1 : 0
+
+Output : 1
+
+Explanation:
+------------
+O can be represented as 0000 in binary form. Even though 0 is the minimum bill amount Darryl must flip a bit once. 
+The following bill amounts can be obtained on flipping a bit at a time:
+
+• By flipping the 1st bit, we obtain 1000 which is 8 in decimal form.
+
+• By flipping the 2nd bit, we obtain 0100 which is 4 in decimal form.
+
+• By flipping the 3rd bit, we obtain 0010 which is 2 in decimal form.
+
+• By flipping the 4th bit, we obtain 0001 which is 1 in decimal form.
+
+Clearly, the minimum possible final bill amount value is 1 dollar.Hence, 1 is returned as the output.
+
+
+
+============================================================================================================
+12.TOSS AND SCORE
+
+
+You are playing a game of Toss and Score in the Hillwood City Mall with your friends.
+The following are the rules of the game:
+
+• Toss an unbiased coin multiple times.
+
+• For each heads you get 2 points and for each tails you lose 1 point.
+
+• The game ends as soon as you get 3 heads in a row, or you toss the coin throughout the length of string S.
+
+You have been given a string S consisting of letters H (for heads) and T (for tails) denoting the sequence of 
+results you get on the toss of a coin N times. Your task is to find and return an integer value representing the 
+final score you get when the game ends.
+
+Note: The final score can be negative too.
+
+Input Specification:
+--------------------
+
+input1: A string S, representing the sequence of results you get on the toss of a coin N times.
+
+Output Specification:
+---------------------
+Return an integer value representing the final score you get when the game ends.
+
+Example 1:
+---------
+
+input1: HHT
+Output : 3
+
+Explanation:
+------------
+Here in this example, the sequence of results is HHT.
+
+• +4 points for two heads
+
+• -1 point for one tails
+
+• The final score is 4 - 1 = 3
+
+Hence, 3 is returned as the output.
+
+Example 2:
+----------
+
+input1 : THHHH
+Output : 5
+
+Explanation:
+--------------
+Here in this example, the sequence of results is THHHH.
+
+• -1 point for one tails
+
+• +6 points for three heads in a row
+
+• The last heads does not contribute to the score because the game ends immediately on getting three heads in a row
+
+• The final score is -1 + 6 = 5
+
+Hence, 5 is returned as the output.
+
+
+===================================================================================================================
+
+13.SMALLEST MISSING EVEN NUMBER
+
+
+You are given an integer array A of length N, and your task is to find and return an integer value representing
+the smallest missing even number from the array A. If all even numbers up to the maximum value 
+in the array are present, return the next even number after the largest even number in the array.
+
+Input Specification:
+--------------------
+input1: An integer value N, representing the size of the given array.
+input2: An integer array A, representing positive integers.
+
+Output Specification:
+----------------------
+Return an integer value representing the smallest missing even number from the array A. 
+If all even numbers up to the maximum value in the array are present, return the next even number after the 
+largest even number in the array
+
+
+Example 1
+----------
+input1.: 5
+input2: (2,4,6,8,12)
+
+Output : 10
+
+Explanation:
+------------
+Here, N = 5 and the A = (2,4,6,8,12). The even numbers in the array are (2,4,6,8,12). 
+The smallest missing even number in this range is 10.
+Hence, 10 is returned as output.
+
+Example 2:
+---------
+input1: 4
+input2 : (4,10,6,2}
+
+Output : 8
+
+Explanation:
+------------
+Here, N = 4 and the A = (4,10,6,2). The even numbers in the array are = (2,4,6,10}.
+The smallest missing even number in this range is 8. 
+Hence, 8 is returned as output.
+
+
+
+========================================================================================================================================
+
+14.MINIMUM INDEX
+
+
+
+You are given an integer array A. You need to find a special index in the array such that the XOR of all the
+elements from the start till the special index is greater than the XOR of all elements after that special index. 
+Your task is to find and return an integer value representing the special index in the array.
+Return -1 if no special index is found.
+
+NOTE:
+• The number at the special index will also be included for the XOR operation with the elements that are 
+  before that special index.
+
+• The XOR of the first and last element will be performed which 0.
+
+• There can be multiple possible special indices, so return the number with minimum index.
+
+Input Specification:
+--------------------
+input1: An integer value, representing the size of the array.
+input2 : An integer array A.
+
+Output Specification:
+---------------------
+Return an integer value representing the special index in the array. Return -1 if no special index is found.
+
+Example 1: 
+----------
+
+input1: 6
+input2 : (4,2,5,7,1,3)
+
+output: 0
+
+Explanation:
+------------
+Here, the given array is (4,2,5,7,1,3). At index 0: The XOR of elements
+(4) is 4, and the XOR of elements (2,5,7,1,3) is 2. As 4 is greater than 2, the number at the special index(0) is 4.
+Hence, 0 is returned as the output.
+
+
+Example 2:
+----------
+input1: 4
+input2 : (4,3,2,9}
+
+Output: 3
+
+Explanation:
+------------
+Here, the given array is (4,3,2,9).
+
+• At index 0: The XOR of elements (4) is 4, and the XOR of elements (3,2,9) is 8.
+
+• At index 1: The XOR of elements (4,3) is 7, and the XOR of elements (2,9) is 11.
+
+• At index 2: The XOR of elements (4,3,2) is 5, and the XOR of elements (9) is 9.
+
+• At index 3: The XOR of elements (4,3,2,9) is 12, and the XOR of elements () is 0.
+
+
+
+====================================================================================================================================================================================
+15.The Robot
+
+
+Tom is a carpenter, and he recently bought a robot that can help him in driving N nails on the wooden planks.
+Each of the N nails are of S inches, and in each beat, the nail goes X inch inside the plank.
+The robot can operate in 2 modes:
+
+• Single mode: Here the robot can target each nail at a time with X beats per minute.
+
+• Dynamic mode: The robot can target all the N nails 1 beat per minute.
+
+Your task is to program the robot to find and return an integer value representing the optimum time to drive all
+ the nails in the plank.
+
+Input Specification:
+--------------------
+input1: An integer value N, representing the number of nails.
+input2 : An integer value X, representing the number of beats the robot can make per minute in a single mode.
+input3 : An integer array S, representing the size of each nail.
+
+Output Specification:
+---------------------
+Return an integer value representing the optimum time to drive all the nails in the plank.
+
+Example 1:
+----------
+input1: 5
+input2: 4
+input3 :{2,2,4,1,1}
+
+Output : 4
+
+Explanation:
+------------
+Here, there are N = 5 nails, X = 4 and S is {2,2,4,1,1}. We can find the optimum time as
+below.
+
+In single mode,
+• It will take 1 minute to put S[1] completely into the plank, since X = 4 which is greater than S[1] = 2.
+• Similarly, S[2], S[3], S[4] and S[5] will also be completed in next 4 minutes as X> S[2], S[3], S[4] and S[5].
+• So, in total 5 minutes, all the nails can be pushed in the plank.
+
+In Dynamic mode,
+• In the first minute, the robot will hit all the nails 1 beat, this will make S as
+{1,1,3,0,0}.
+• In the second minute, the robot again will hit all the nails 1 beat, this will make S as (0,0,2,0,0).
+
+• Similarly, in the third minute S becomes (0.0,1,0,0)
+
+Example 2:
+----------
+
+input1: 3
+input2: 10
+input3: {7,8,9}
+
+Output : 3
+
+Explanation:
+------------
+Here, there are N = 3 nails, X = 10 and S is {7,8,9}. We can find the optimum time as below:
+In single mode:
+• It will take 1 minute to put S[1] completely into the plank, since X = 10 which is
+greater than S[1] = 7.
+• Similarly, S[2] and S[3] will also be completed in next 2 minutes as X > S[2] and S[3].
+So, in total 3 minutes, all the nails can be pushed in the plank.
+
+Dynamic mode:
+• In the first minute, the robot will hit all the nails 1 beat, this will make S as (6,7,8).
+• In the second minute, the robot will hit all the nails 1 beat, this will make S as (5,6,7).
+• Similarly, in the third minute S becomes (4,5,6).
+• In the fourth minute, S becomes (3,4,5).
+• In the fifth minute, 5 becomes (2,3,4).
+• In the sixth minute, S becomes (1,2,3).
+• In the seventh minute, S becomes (0, 1,2).
+• In the eighth minute, S becomes (0,0, 1).
+• In the ninth minute, S becomes (0,0,0).
+• So, in total 9 minutes, all the nails can be pushed in the plank.
+
+The better approach will be Single mode which does the task in 3 minutes
+
+Therefore, 4 is returned as the output.
+
+
+
+======================================================================================================================
+16.SOCIAL MEDIA USERNAME
+
+
+You are analyzing usernames on a social media platform where each username is made up of unique lowercase letters.
+You want to compare two usernames M and N to see how many characters are in common between them but are located at 
+different positions .Your task is to find and return an integer value representing the count of positions.
+Your task is to find and return an integer value representing the count if distinct characters that occur in both
+usernames but not at the same positions
+
+
+input specifications:
+--------------------
+
+input1: A strong value M , representing the first username.
+inputt2: A string value N, representing the second username
+
+
+output specification:
+---------------------
+
+Return an integer value representing the number of istinct characters that occur in both usernames but not at the 
+same positions.
+
+
+Example 1:
+----------
+
+input1: abcde
+input2: edcba
+
+output : 4
+
+Explanation :
+-------------
+Here , the username M is "abcde" and N is "edcba". The common characters in both strings are:
+
+	-> 'a','b','c','d' and 'e'.
+
+all 5 characters exist in both strings. Their positions are all different except for 'c'.
+
+Hence , 4 is returned as the output.
+
+Example 2:
+----------
+
+input1: helo
+input2: heol
+
+output : 2
+
+Explanation:
+------------
+
+Here, the username M is "helo" and N is "heol". The common characters in both strings are:
+	-> 'h','e','l' and 'o'.
+	
+Among the common characters ,'i' and 'o' are present in both but at different positions.
+Hence ,2 is returned as the output.
+
+
+=====================================================================================================================
+
+17.TILING COST
+
+
+
+Bob has bought a complete basement for warehousing. He wants to tile its entire floor which is X units in 
+length and Y units in breadth. He has a mathematical function (X, Y) to find the tiling cost for the flooring:
+
+1. f(X,Y) = 0, if X=0 or Y=0
+2. f(X,Y) = X*y*h(X,Y), if X=1 or Y=1
+3. f(X,Y) = f(X-2,Y-2) + (2X + 2Y - 4) *h (X,Y), otherwise.
+where h (X,Y) = (2*X) + (3*Y) + 5
+
+Your task is to help Bob find and return an integer value representing the total cost of tiling the floor 
+using the mathematical function f (X,Y).
+
+input Specification:
+--------------------
+input1 : An integer value X, representing the length of the floor to be tiled.
+input2: An integer value Y, representing the breadth of the floor to be tiled.
+
+Output Specification:
+---------------------
+Retum an integer value representing the total cost of tiling the floor using mathematical function f (X,Y).
+
+Example 1: 
+----------
+
+input1 : 3
+input2 : 5
+
+Output : 360
+
+Explanation:
+------------
+
+HEre, we are given the length of the basement X=3 and the breadth of the basement Y=5 . 
+The cost of tiling basement will be:
+
+f(X,Y) = f(X-2,Y-2)+(2X+2Y-4)*h(X,Y)
+f(3,5) = f(1,3)+(2*3+2*5-4)*h(3,5)
+where h(3,5)=2*3+3*5+5=26
+
+f(3,5) = (1*3)*h(1,3) + (6+10-4)*26
+f(3,5) = 3*(2*1+3*3+5)+12*26
+f(3,5)=360
+Hence,360 is returned as the output.
+
+
+
+Example 2:
+----------
+
+input1: 1000
+input2: 1
+
+Output : 2008000
+
+Explanation:
+------------
+
+Here we are given the length of the basement X=1000 and the breadth of the basement Y=1. 
+The cost of tiling the basement will be:
+f(X,Y) =X*Y*h(X,Y)
+f(1000,1)=1000*1*h(1000,1)
+where h(1000,1)=2*1000+3*1+5=2008
+f(1000,1) =1000*1*2008
+f(1000,1)=2008000
+Hence,2008000 is returned as the output.
+
+
+
+
+=========================================================================
+
+18.DRONE DELIVERY
+
+You are given a string S containing space separated IDs representing signals of a drone network .
+There are some invalid IDs present in the list due to some signal imbalance, and you need to find the valid IDs
+out of all of them .
+
+For each of the ID
+
+->if the length of the ID is even , rotate the string left by half its length.
+
+-> if the length is odd , rotate the string right by (length/2)
+
+After rotation ,compute a mapped sum by converting each character as follows:
+
+-> Digits(0-9) contribute to their numeric value.
+
+-> Vowels (a,e,i,o,u case-insensitive) contribute to 1.
+
+-> All other characters contribute their ASCII value modulo 10.
+
+if this sum is a perfect square (like 1,4,9,16,25, etc..) , the original ID is considered valid.
+
+Your task is to find and return a string value representing all the space separated valid IDs ,
+in the order they appeared.
+
+Input specification:
+---------------------
+
+input1:A string S containing IDs.
+
+Output specification:
+---------------------
+
+Return a string representing all the valid IDs, in the order they appear.
+
+Example 1:
+----------
+
+input1: abd34 aeiou4
+
+Output: abd34 aeiou4
+
+
+Explanation:
+------------
+
+Here, the string S is "abd34 aeiou4"
+for "abd34"
+
+-> Rotate rights by (5/2)=2 which will be "34abd", in 34abd,
+
+	'3'--> 3
+	
+	'4'--> 4
+	
+	'a'-->vowel-->1
+	
+	'b'-->ASCII('b')=98-->98%10=8
+	
+	'd'-->ASCII('d')=100-->100%10=0
+	
+Sum = 3 + 4 + 1 + 8 + 0 = 16.16 is a perfect square(4^2) .so "abd34" is valid.
+
+	
+for "aeiou4"
+
+-> Rotate lefty (6/2)=3 which will be "ou4aei",in ou4aei,
+
+	'o'--> vowel --> 1
+	
+	'u'--> vowel --> 1
+	
+	'4'--> digit --> 4
+	
+	'a'--> vowel --> 1
+	
+	'e'--> vowel --> 1
+	
+	'i'--> vowel --> 1
+	
+Sum = 1 + 1 + 4 + 1 + 1 + 1 =9. 9 is a perfect square(3^2), so "aeiou4" is valid.
+
+Hence ,abd34 aeiou4 is returned as the output.
+
+
+Example 2:
+----------
+
+input1: atyre aeiou56
+
+output: aeiou56
+
+
+Explanation:
+-------------
+Here, the string S is "atyre aeiou56".
+
+for "atyre".
+-> Rotate right by (5/2) =2 which will be "reaty". in reaty 
+	'r' --> ASCII 114 --> 114%10 =4
+	
+	'e' --> vowel -->1
+	
+	'a' --> vowel -->1
+	
+	't' --> ASCII 116 --> 116%10 = 6
+	
+	'y' --> ASCII 121 --> 121%10 = 1
+	
+Sum =4 + 1 + 1 + 6 + 1 = 13. 13 is not a perfect Square,so "atyre" is invalid.
+
+
+
+for "aeiou56" 
+
+-> Rotate right by (7/2) = 3 which will be "u56aeiou". in u56aeiou,
+
+	'u' --> vowel -->1
+	
+	'5' --> digit -->5
+	
+	'6' --> digit -->6
+	
+	'a' --> vowel -->1
+	
+	'e' --> vowel -->1
+	
+	'i' --> vowel -->1
+	
+	'o' --> vowel -->1
+
+Sum = 1 + 5 + 6 + 1 + 1 + 1 + 1 = 16. 16 is a perfect square (4^2) ,so "aeiou56" is valid.
+
+Hence,aeiou56 is returned as output.
+
+
+
+======================================================================================================
+
+19.MAZE OF PEOPLE
+
+
+You are standing in a long line to enter the maze of trails . the line is endless and only two people can enter 
+the maze every second . 
+
+The process follows these rules
+
+-> Every second , the 1st and 3rd people in the line enter the maze
+-> The person who was 2nd before, they will move to the 1st position
+-> This keeps happening every second, with the 1st 3rd people always entering and leaving.
+
+At the start, you are at the Nth position in the line. Your task is to find and return as integer value 
+representing how many seconds it will take for you to enter the maze
+
+Input Specification:
+--------------------.
+input1: An integer value N representing your position in the line.
+
+Output Specification:
+--------------------
+Return an integer value representing how many seconds it will take for you to enter the maze.
+
+
+Example 1:
+---------
+input1 : 5
+
+output : 2
+
+
+Explanation:
+-----------
+
+Here, you are standing in the 5th position in the line , According to the rules the 1st and 3rd person will get 
+in the maze in the 1st second. The 2nd and 5th person will get in in the 2nd second. IT took you 2 seconds to get 
+in the maze, here 2 is returned as output.
+
+
+Example 2:
+----------
+input1 : 3
+
+output : 1
+
+====================================================================================================================
+
